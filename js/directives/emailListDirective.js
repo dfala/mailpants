@@ -1,14 +1,15 @@
 angular.module('mailPants')
 
 .directive('emailList',
-function (listService, dataStorage, $location, $timeout) {
+function (listService, dataStorage, $location, $rootScope, $timeout) {
 	return {
 		restrict: 'A',
 		scope: true,
 		link: function (scope, elem, attrs) {
 
 			// TODO: change this once user authentication
-			var userEmail = 'dnlfala@gmail.com';
+			var userEmail = 'yofala@gmail.com';
+			$rootScope.userEmail = userEmail;
 
 			// Check for email sucess message
 			scope.successMessage = dataStorage.isSuccess();
@@ -31,7 +32,7 @@ function (listService, dataStorage, $location, $timeout) {
 
 
 			scope.newEmails = function (newList) {
-				newList.userEmail = 'dnlfala@gmail.com';
+				newList.userEmail = userEmail;
 
 				listService.saveList(newList)
 				.then(function (response) {

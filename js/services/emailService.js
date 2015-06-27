@@ -1,8 +1,7 @@
 angular.module('mailPants')
 
-.service('emailService', function ($http, $q, dataStorage) {
+.service('emailService', function ($http, $q, dataStorage, $rootScope) {
 	var service = {};
-
 
 	// Compose emails
 	service.sendBatch = function (emailBody) {
@@ -11,6 +10,9 @@ angular.module('mailPants')
 			subject: emailBody.subject,
 			html: emailBody.html
 		}
+
+		//TODO: refactor
+		email.from_email = $rootScope.userEmail;
 
 		var emailList = dataStorage.serveList().emails;
 		var toField = [];
