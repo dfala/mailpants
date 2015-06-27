@@ -19,6 +19,10 @@
   "homepage": "https://github.com/dfala/mailpants",
   "dependencies": {
     "body-parser": "^1.13.1",
-    "cors": "^2.7.1"
+    "cors": "^2.7.1",
+    "express": "^4.13.0",
+    "mandrill-api": "^1.0.45",
+    "mongoose": "^4.0.6",
+    "textangular": "^1.4.1"
   }
 }
