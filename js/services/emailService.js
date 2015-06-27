@@ -38,46 +38,5 @@ angular.module('mailPants')
 	}
 
 
-
-	// Email lists
-	service.getLists = function (userEmail) {
-		var deferred = $q.defer();
-		var uri = '/emailLists/' + userEmail;
-
-		$http.get(uri)
-		.success(function (response) {
-			deferred.resolve(response);
-		})
-		.error(function (err) {
-			deferred.reject(err);
-		})
-
-		return deferred.promise;
-	}
-
-
-	service.storeList = function (newList) {
-		var deferred = $q.defer();
-
-		// clean list object
-		var emailArray = newList.addedEmails.split(',');
-		if(!emailArray[emailArray.length - 1]) emailArray.pop();
-
-		newList.emails = emailArray;
-		newList.emailCount = emailArray.length;
-		delete newList['addedEmails'];
-
-		$http.post('/emailList', newList)
-		.success(function (response) {
-			deferred.resolve(response);
-		})
-		.error(function (err) {
-			deferred.reject(err);
-		})
-
-		return deferred.promise;
-	}
-
-
 	return service;
-})
+});
