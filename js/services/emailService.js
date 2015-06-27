@@ -5,15 +5,15 @@ angular.module('mailPants')
 
 
 	// Compose emails
-	service.sendBatch = function (html) {
+	service.sendBatch = function (emailBody) {
 		var email = {
-			subject: 'A message from me to you!',
-			html: html
+			subject: emailBody.subject,
+			html: emailBody.html
 		}
 
 		var emailList = dataStorage.serveList().emails;
 		var toField = [];
-		
+
 		emailList.forEach(function (email) {
 			var emailInstance = {
 				email: email,
@@ -56,10 +56,11 @@ angular.module('mailPants')
 
 		// clean list object
 		var emailArray = newList.addedEmails.split(',');
+		if(!emailArray[emailArray.length - 1]) emailArray.pop();
+
 		newList.emails = emailArray;
 		newList.emailCount = emailArray.length;
 		delete newList['addedEmails'];
-
 
 		$http.post('/emailList', newList)
 		.success(function (response) {

@@ -21,9 +21,36 @@ h1, h2, h3, h4, p {
 	font-family: 'Open Sans', sans-serif;
 }
 
+
+/*ANGULAR STUFF*/
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
+/*APP STYLING*/
+* {
+	box-sizing: border-box;
+}
+
+/*HIGHLIGHT COLOR*/
+::-moz-selection {
+	background-color: #1481e3;
+	color: #fff;
+}
+
+::selection {
+	background-color: #1481e3;
+	color: #fff;
+}
+
 .btn {
 	border-radius: 2px;
 	margin-top: 15px;
+}
+
+.btn-kameleon:hover {
+	background-color: #000;
+	color: #fff;
 }
 
 .main-container {
@@ -36,7 +63,18 @@ h1, h2, h3, h4, p {
 }
 
 .breadcrumb {
-	padding: 25px;
+	padding: 20px 30px;
 	background-color: #fff;
+	border-bottom: 1px solid #DEDEDE;
+}
+
+.form-control, .form-control:focus {
+	border-radius: 2px;
+	box-shadow: none;
+	outline: none;
+	padding: 20px 15px;
+}
+
+.border-bottom {
 	border-bottom: 1px solid #DEDEDE;
 }

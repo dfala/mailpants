@@ -26,7 +26,8 @@ angular.module('mailPants')
 
 				emailService.storeList(newList)
 				.then(function (response) {
-					console.log('response on directive:', response)
+					console.log('response on directive:', response);
+					scope.lists.unshift(response);
 				})
 				.catch(function (err) {
 					throw new Error(err);

@@ -1,0 +1,18 @@
+.space {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	padding: 20px 40px 30px 40px;
+}
+
+.listed-lists {
+	display: flex;
+	align-items: center;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	border-bottom: 1px solid #F2F2F2;
+	/*border: 1px solid red;*/
+}
+
+	.listed-lists .btn, p {
+		margin: 0;
+	}

@@ -5,12 +5,12 @@ angular.module('mailPants')
     restrict: 'A',
     scope: true,
     link: function (scope, elem, attrs) {
-      
-      scope.sendEmail = function (htmlVariable) {
-        if (!htmlVariable) alert('Come on man... add something!');
-        emailService.sendBatch(htmlVariable);
+
+      scope.sendEmail = function (emailBody) {
+        if (!emailBody) alert('Come on man... add something!');
+        emailService.sendBatch(emailBody);
       }
-      
+
     }
   }
 })

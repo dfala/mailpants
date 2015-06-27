@@ -24,3 +24,8 @@
 textarea.ta-bind {
 	width: 100%;
 }
+
+.ta-root.focussed > .ta-scroll-window.form-control {
+	outline: none;
+	box-shadow: none;
+}
