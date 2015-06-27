@@ -21,6 +21,7 @@ var EmailController = require('./controllers/emailController.js');
 app.post('/email', EmailController.send);
 app.post('/emailList', EmailController.saveList);
 app.get('/emailLists/:userEmail', EmailController.getLists);
+app.delete('/api/list/:listId', EmailController.deleteList);
 
 // Connections
 var mongooseUri = 'mongodb://localhost/mailpants';

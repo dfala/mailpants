@@ -27,3 +27,11 @@ exports.getLists = function (req, res) {
 		return res.json(result);
 	})
 }
+
+exports.deleteList = function (req, res) {
+	var userId = req.params.listId;
+	EmailList.findByIdAndRemove(userId, function (err, result) {
+		if (err) return res.status(500).send(err);
+		return res.json(result);
+	})
+}

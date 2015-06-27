@@ -42,7 +42,17 @@ angular.module('mailPants')
 
 
 			scope.deleteList = function (id) {
-				listService.deleteList(id);
+				listService.deleteList(id)
+				.then(function (response) {
+					console.log('success reponse:', response);
+					scope.lists = scope.lists.filter(function (list, index) {
+						if (list._id === response._id) return false;
+						return true;
+					})
+				})
+				.catch(function (err) {
+					throw new Error(err);
+				});
 			}
 
 		}

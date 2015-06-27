@@ -44,7 +44,18 @@ angular.module('mailPants')
 
 
 	service.deleteList = function (listId) {
-		console.log(listId);
+		var deferred = $q.defer();
+
+		var uri = '/api/list/' + listId;
+		$http.delete(uri)
+		.success(function (response) {
+			deferred.resolve(response);
+		})
+		.error(function (err) {
+			deferred.reject(err);
+		})
+
+		return deferred.promise;
 	}
 
 	return service;
