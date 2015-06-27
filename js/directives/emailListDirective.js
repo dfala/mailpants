@@ -2,9 +2,8 @@ angular.module('mailPants')
 
 .directive('emailList', function (emailService) {
 	return {
-		restrict: 'E',
+		restrict: 'A',
 		scope: true,
-		templateUrl: '/templates/emailList.html',
 		link: function (scope, elem, attrs) {
 			
 			scope.newEmails = function (addedEmails) {

@@ -25,7 +25,8 @@ angular.module('mailPants')
 		var emailArray = emailString.split(',');
 		var emailList = {
 			emails: emailArray,
-			emailCount: emailArray.length
+			emailCount: emailArray.length,
+			userEmail: 'dnlfala@gmail.com'
 		}
 
 		$http.post('/emailList', emailList)
