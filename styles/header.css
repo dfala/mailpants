@@ -1,0 +1,9 @@
+header {
+	position: fixed;
+	width: 100%;
+	background-color: #fff;
+	padding: 20px 30px;
+	border-bottom: 1px solid #DEDEDE;
+	display: flex;
+	justify-content: space-between;
+}
