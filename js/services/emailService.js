@@ -1,6 +1,6 @@
 angular.module('mailPants')
 
-.service('emailService', function ($http) {
+.service('emailService', function ($http, $q) {
 	var service = {};
 
 	
@@ -10,12 +10,33 @@ angular.module('mailPants')
 		}
 
 		$http.post('/email', email)
-		.then(function (response) {
+		.success(function (response) {
 			console.log('response on service', response);
 		})
-		.catch(function (err) {
+		.error(function (err) {
 			throw new Error(err);
 		})
+	}
+
+
+	service.saveList = function (emailString) {
+		var deferred = $q.defer();
+
+		var emailArray = emailString.split(',');
+		var emailList = {
+			emails: emailArray,
+			emailCount: emailArray.length
+		}
+
+		$http.post('/emailList', emailList)
+		.success(function (response) {
+			deferred.resolve(response);
+		})
+		.error(function (err) {
+			deferred.reject(err);
+		})
+
+		return deferred.promise;
 	}
 
 
