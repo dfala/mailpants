@@ -6,7 +6,7 @@ angular.module('mailPants')
 		scope: true,
 		templateUrl: 'templates/home.html',
 		link: function (scope, elem, attrs) {
-			console.log('hi!');
+			// console.log('hi!');
 		}
 	}
 })
