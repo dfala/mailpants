@@ -6,6 +6,7 @@ angular.module('mailPants')
 
 	// Compose emails
 	service.sendBatch = function (emailBody) {
+		var deferred = $q.defer();
 		var email = {
 			subject: emailBody.subject,
 			html: emailBody.html
@@ -23,13 +24,17 @@ angular.module('mailPants')
 		})
 		email.to = toField;
 
+
 		$http.post('/email', email)
 		.success(function (response) {
-			console.log('response on service', response);
+			deferred.resolve(response);
 		})
 		.error(function (err) {
-			throw new Error(err);
+			deferred.reject(response);
 		})
+
+
+		return deferred.promise;
 	}
 
 

@@ -31,7 +31,7 @@ var message = {
         "Reply-To": "dnlfala@gmail.com"
     }
 };
-var async = false;
+var async = true;
 var ip_pool = "Main Pool";
 
 

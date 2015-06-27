@@ -65,7 +65,7 @@ h1, h2, h3, h4, p {
 .breadcrumb {
 	padding: 20px 30px;
 	background-color: #fff;
-	border-bottom: 1px solid #DEDEDE;
+	border-bottom: 1px solid #1a75ff;
 }
 
 .form-control, .form-control:focus {
@@ -78,3 +78,20 @@ h1, h2, h3, h4, p {
 .border-bottom {
 	border-bottom: 1px solid #DEDEDE;
 }
+
+.bg-success {
+	max-width: 600px;
+	padding: 20px;
+	margin: 0 auto;
+	border-radius: 2px;
+  	box-shadow: 0px 0px 3px -1px #000;
+  	
+	position: fixed;
+	top: 40px;
+	right: 15%;
+	display: flex;
+	justify-content: space-between;
+}
+	.bg-success .close {
+		margin-left: 20px;
+	}
