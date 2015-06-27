@@ -1,6 +1,6 @@
 angular.module('mailPants')
 
-.directive('emailList', function (emailService) {
+.directive('emailList', function (emailService, dataStorage, $location) {
 	return {
 		restrict: 'A',
 		scope: true,
@@ -20,17 +20,22 @@ angular.module('mailPants')
 			}
 			getLists();
 
-			
+
 			scope.newEmails = function (newList) {
 				newList.userEmail = 'dnlfala@gmail.com';
-				
-				emailService.saveList(newList)
+
+				emailService.storeList(newList)
 				.then(function (response) {
 					console.log('response on directive:', response)
 				})
 				.catch(function (err) {
 					throw new Error(err);
 				})
+			}
+
+			scope.selectList = function (list) {
+				dataStorage.storeList(list);
+				$location.path('/compose-email');
 			}
 
 		}

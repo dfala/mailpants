@@ -11,6 +11,7 @@ exports.sendEmail = function (body, err, success) {
 
     message.html = body.html;
     message.subject = body.subject;
+    message.to = body.to;
 
     mandrill_client.messages.send({"message": message, "async": async, "ip_pool": ip_pool}, function(result) {
         console.log(result);
@@ -22,19 +23,36 @@ exports.sendEmail = function (body, err, success) {
 }
 
 var message = {
-    // "html": "<p style='font-size: 40px; color: red'>Sad day :(</p>  <a href='*|UNSUB:http://mywebsite.com/unsub|*'>Click here to unsubscribe.</a>",
     "text": "Example text content",
     "subject": "example subject",
     "from_email": "dnlfala@gmail.com",
     "from_name": "Daniel Falabella",
-    "to": [{
-            "email": "yofala@gmail.com",
-            "name": "Daniel Falabella",
-            "type": "to"
-        }],
     "headers": {
         "Reply-To": "dnlfala@gmail.com"
     }
 };
 var async = false;
 var ip_pool = "Main Pool";
+
+
+
+
+
+
+// Example basic message structure
+
+// var message = {
+//     "html": "<p style='font-size: 40px; color: red'>Sad day :(</p>  <a href='*|UNSUB:http://mywebsite.com/unsub|*'>Click here to unsubscribe.</a>",
+//     "text": "Example text content",
+//     "subject": "example subject",
+//     "from_email": "dnlfala@gmail.com",
+//     "from_name": "Daniel Falabella",
+//     "to": [{
+//             "email": "yofala@gmail.com",
+//             "name": "Daniel Falabella",
+//             "type": "to"
+//         }],
+//     "headers": {
+//         "Reply-To": "dnlfala@gmail.com"
+//     }
+// };

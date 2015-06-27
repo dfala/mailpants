@@ -1,14 +1,27 @@
 angular.module('mailPants')
 
-.service('emailService', function ($http, $q) {
+.service('emailService', function ($http, $q, dataStorage) {
 	var service = {};
 
-	
+
 	// Compose emails
-	service.send = function (html) {
+	service.sendBatch = function (html) {
 		var email = {
+			subject: 'A message from me to you!',
 			html: html
 		}
+
+		var emailList = dataStorage.serveList().emails;
+		var toField = [];
+		
+		emailList.forEach(function (email) {
+			var emailInstance = {
+				email: email,
+				type: "to"
+			}
+			toField.push(emailInstance);
+		})
+		email.to = toField;
 
 		$http.post('/email', email)
 		.success(function (response) {
@@ -25,7 +38,7 @@ angular.module('mailPants')
 	service.getLists = function (userEmail) {
 		var deferred = $q.defer();
 		var uri = '/emailLists/' + userEmail;
-		
+
 		$http.get(uri)
 		.success(function (response) {
 			deferred.resolve(response);
@@ -38,7 +51,7 @@ angular.module('mailPants')
 	}
 
 
-	service.saveList = function (newList) {
+	service.storeList = function (newList) {
 		var deferred = $q.defer();
 
 		// clean list object

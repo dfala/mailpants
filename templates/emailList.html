@@ -20,7 +20,7 @@
 	<br>
 	<div class="main-container">
 		<div ng-repeat="list in lists">
-			{{list.listName}}, {{list.emailCount}}
+			<button class="btn btn-default" ng-click="selectList(list)">Select list</button> {{list.listName}}, {{list.emailCount}}
 		</div>
 	</div>
 </div>

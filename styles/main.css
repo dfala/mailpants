@@ -1,3 +1,12 @@
+/*COLORS*/
+/*#2ecc71 // Green*/
+/*#1a75ff // Blue*/
+/*#ff611a // Orange*/
+/*#FFD700 // Yellow*/
+
+/*rgba(0, 0, 0, 0.8) // Black*/
+/*#DEDEDE // Border Gray*/
+
 html, body {
 	margin: 0;
 	padding: 0;
@@ -21,4 +30,10 @@ h1, h2, h3, h4, p {
 
 	border: 1px solid #DEDEDE;
 	background-color: #fff;
+}
+
+.breadcrumb {
+	padding: 25px;
+	background-color: #fff;
+	border-bottom: 1px solid #DEDEDE;
 }

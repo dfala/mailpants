@@ -1,10 +1,12 @@
-<ol class="breadcrumb">
-	<li><a href="/#/">Home</a></li>
-	<li class="active"><a href="/#/email-list">Email List</a></li>
-	<li class="active">Compose Email</li>
-</ol>
+<div compose-email>
+	<ol class="breadcrumb">
+		<li><a href="/#/">Home</a></li>
+		<li class="active"><a href="/#/email-list">Email List</a></li>
+		<li class="active">Compose Email</li>
+	</ol>
 
-<div class="main-container text-editor">
-	<text-angular ng-model="htmlVariable"></text-angular>
-	<button class="btn btn-default" ng-click="sendEmail(htmlVariable)">Send email</button>
+	<div class="main-container text-editor">
+		<text-angular ng-model="htmlVariable"></text-angular>
+		<button class="btn btn-default" ng-click="sendEmail(htmlVariable)">Send email</button>
+	</div>
 </div>
