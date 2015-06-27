@@ -1,0 +1,24 @@
+{
+  "name": "mailpants",
+  "version": "0.0.0",
+  "description": "Email automation.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dfala/mailpants.git"
+  },
+  "author": "Daniel Falabella",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dfala/mailpants/issues"
+  },
+  "homepage": "https://github.com/dfala/mailpants",
+  "dependencies": {
+    "body-parser": "^1.13.1",
+    "cors": "^2.7.1"
+  }
+}
