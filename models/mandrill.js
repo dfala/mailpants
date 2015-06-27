@@ -24,7 +24,6 @@ exports.sendEmail = function (body, err, success) {
 
 var message = {
     "text": "Example text content",
-    "subject": "example subject",
     "from_email": "dnlfala@gmail.com",
     "from_name": "Daniel Falabella",
     "headers": {

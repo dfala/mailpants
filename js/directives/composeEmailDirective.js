@@ -1,6 +1,6 @@
 angular.module('mailPants')
 
-.directive('composeEmail', function (emailService, $location) {
+.directive('composeEmail', function (emailService, dataStorage, $location) {
   return {
     restrict: 'A',
     scope: true,
@@ -10,8 +10,8 @@ angular.module('mailPants')
         if (!emailBody) alert('Come on man... add something!');
         emailService.sendBatch(emailBody)
         .then(function (response) {
+          dataStorage.messageSuccess();
           $location.path('/email-list');
-          // <p class="bg-success"></p>
         })
         .catch(function (err) {
           // <p class="bg-danger">...</p>

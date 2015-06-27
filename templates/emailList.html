@@ -1,15 +1,18 @@
 <div email-list>
+
+	<!-- BREADCRUMBS -->
 	<ol class="breadcrumb">
 		<li><a href="/#/">Home</a></li>
 		<li class="active">Email List</li>
-		<li><a href="/#/compose-email">Compose Email</a></li>
 	</ol>
 
-	<div class="bg-success">
+	<!-- EMAIL SUCCESS MESSAGE -->
+	<div class="bg-success" ng-show="successMessage">
 		<p>Email batch was sent successfully!</p>
-		<button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		<button type="button" class="close" aria-label="Close"><span aria-hidden="true" ng-click="successMessage = false;">&times;</span></button>
 	</div>
 
+	<!-- CREATE NEW LIST -->
 	<div class="main-container">
 
 		<h4>Create New list</h4>
@@ -22,6 +25,7 @@
 		</form>
 	</div>
 
+	<!-- DISPLAY SAVED LISTS -->
 	<div class="main-container space">
 
 		<div class="row border-bottom">
@@ -33,6 +37,7 @@
 			</div>
 			<div class="col-md-3"></div>
 		</div>
+
 
 		<div class="listed-lists row" ng-repeat="list in lists">
 			<div class="col-md-6">
@@ -50,6 +55,6 @@
 					<button class="btn btn-danger" ng-click="deleteList(list._id)">x</button>
 			</div>
 		</div>
-
 	</div>
+
 </div>

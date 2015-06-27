@@ -12,5 +12,21 @@ angular.module('mailPants')
   	return storedList;
   }
 
+
+  ////////////////////////////////////
+
+  var sentSuccess = false;
+  service.messageSuccess = function () {
+  	sentSuccess = true;
+  }
+
+  service.isSuccess = function () {
+  	if (sentSuccess === true) {
+  		sentSuccess = false;
+  		return true;
+  	}	
+  	return sentSuccess;
+  }
+
   return service;
 })
