@@ -18,3 +18,12 @@ exports.saveList = function (req, res) {
 		return res.json(result);
 	})
 }
+
+exports.getLists = function (req, res) {
+	var userEmail = req.params.userEmail;
+	EmailList.find({ "userEmail": userEmail }, function (err, result) {
+		if (err) return res.status(500).send(err);
+		console.log(result);
+		return res.json(result);
+	})
+}

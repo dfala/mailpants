@@ -13,4 +13,6 @@ angular.module('mailPants', ['textAngular', 'ngRoute'])
 	.when('/compose-email', {
 		templateUrl: '/templates/composeEmail.html'
 	})
+
+	.otherwise('/');
 })

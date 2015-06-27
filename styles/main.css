@@ -1,10 +1,24 @@
 html, body {
 	margin: 0;
 	padding: 0;
-	background-color: #F3F8FA;
-	/*font-family: 'Open Sans', sans-serif;*/
+	background-color: #f6f6ef;
+	font-family: 'Open Sans', sans-serif;
 }
 
 h1, h2, h3, h4, p {
-	/*font-family: 'Open Sans', sans-serif;*/
+	font-family: 'Open Sans', sans-serif;
+}
+
+.btn {
+	border-radius: 2px;
+	margin-top: 15px;
+}
+
+.main-container {
+	width: 800px;
+	margin: 0 auto;
+	padding: 20px;
+
+	border: 1px solid #DEDEDE;
+	background-color: #fff;
 }

@@ -15,11 +15,12 @@ app.use(cors());
 app.use(bodyParser());
 
 // Controllers
-var Email = require('./controllers/emailController.js');
+var EmailController = require('./controllers/emailController.js');
 
 // RESTful api
-app.post('/email', Email.send);
-app.post('/emailList', Email.saveList);
+app.post('/email', EmailController.send);
+app.post('/emailList', EmailController.saveList);
+app.get('/emailLists/:userEmail', EmailController.getLists);
 
 // Connections
 var mongooseUri = 'mongodb://localhost/mailpants';

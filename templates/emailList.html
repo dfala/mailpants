@@ -1,16 +1,26 @@
 <div email-list>
-
 	<ol class="breadcrumb">
 		<li><a href="/#/">Home</a></li>
 		<li class="active">Email List</li>
 		<li><a href="/#/compose-email">Compose Email</a></li>
 	</ol>
 
-	<h1>This better be working</h1>
+	<div class="main-container">
 
-	<form ng-submit="newEmails(addedEmails)">
-		<textarea class="form-control" ng-model="addedEmails"></textarea>
-		<button>Submit Emails</button>
-	</form>
+		<h4>Create New list</h4>
 
+		<form ng-submit="newEmails(newList)">
+			<input placeholder="List name" class="form-control" ng-model="newList.listName">
+			<br>
+			<textarea class="form-control" ng-model="newList.addedEmails"></textarea>
+			<button class="btn btn-default">Save email list</button>
+		</form>
+	</div>
+
+	<br>
+	<div class="main-container">
+		<div ng-repeat="list in lists">
+			{{list.listName}}, {{list.emailCount}}
+		</div>
+	</div>
 </div>

@@ -4,6 +4,7 @@ angular.module('mailPants')
 	var service = {};
 
 	
+	// Compose emails
 	service.send = function (html) {
 		var email = {
 			html: html
@@ -19,17 +20,35 @@ angular.module('mailPants')
 	}
 
 
-	service.saveList = function (emailString) {
+
+	// Email lists
+	service.getLists = function (userEmail) {
+		var deferred = $q.defer();
+		var uri = '/emailLists/' + userEmail;
+		
+		$http.get(uri)
+		.success(function (response) {
+			deferred.resolve(response);
+		})
+		.error(function (err) {
+			deferred.reject(err);
+		})
+
+		return deferred.promise;
+	}
+
+
+	service.saveList = function (newList) {
 		var deferred = $q.defer();
 
-		var emailArray = emailString.split(',');
-		var emailList = {
-			emails: emailArray,
-			emailCount: emailArray.length,
-			userEmail: 'dnlfala@gmail.com'
-		}
+		// clean list object
+		var emailArray = newList.addedEmails.split(',');
+		newList.emails = emailArray;
+		newList.emailCount = emailArray.length;
+		delete newList['addedEmails'];
 
-		$http.post('/emailList', emailList)
+
+		$http.post('/emailList', newList)
 		.success(function (response) {
 			deferred.resolve(response);
 		})
