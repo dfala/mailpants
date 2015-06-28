@@ -11,16 +11,8 @@ function (listService, dataStorage, $location, $rootScope, $timeout) {
 			var userEmail = 'yofala@gmail.com';
 			$rootScope.userEmail = userEmail;
 
-			// Check for email sucess message
-			scope.successMessage = dataStorage.isSuccess();
-			if (scope.successMessage === true) {
-				$timeout(function () {
-					scope.successMessage = false;
-				}, 2000)
-			}
-
-			var getLists = function (userEmail) {
-				listService.getLists('dnlfala@gmail.com')
+			var getLists = function () {
+				listService.getLists(userEmail)
 				.then(function (response) {
 					scope.lists = response;
 				})

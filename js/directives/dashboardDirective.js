@@ -1,19 +1,27 @@
 angular.module('mailPants')
 
-.directive('dashboardDirective', function ($rootScope, dashboardService) {
+.directive('dashboardDirective', function ($rootScope, dataStorage, $timeout, dashboardService) {
   return {
     restrict: 'A',
     scope: true,
     link: function (scope, elem, attrs) {
+
       //TODO: change this once we can login users:
       var userEmail = $rootScope.userEmail = 'yofala@gmail.com';
       scope.displayAll = true;
+
+      // Check for email sucess message
+      scope.successMessage = dataStorage.isSuccess();
+      if (scope.successMessage === true) {
+        $timeout(function () {
+          scope.successMessage = false;
+        }, 2000);
+      }
 
       var getUserData = (function () {
           if (!userEmail) return console.warn('No user email defined');
           dashboardService.getUserData(userEmail)
           .then(function (response) {
-            console.log(response);
             scope.allUserData = response;
           })
           .catch(function (err) {

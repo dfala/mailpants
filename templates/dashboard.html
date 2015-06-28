@@ -1,6 +1,12 @@
 <header-template></header-template>
 
 <div class="main-container" dashboard-directive>
+  <!-- EMAIL SUCCESS MESSAGE -->
+  <div class="bg-success" ng-show="successMessage">
+    <p>Email batch was sent successfully!</p>
+    <button type="button" class="close" aria-label="Close"><span aria-hidden="true" ng-click="successMessage = false;">&times;</span></button>
+  </div>
+
   <ul class="nav nav-tabs nav-justified" id="nav-menu">
     <li role="presentation" choose-data time="all" class="active"><a class="pointer">All time</a></li>
     <li role="presentation" choose-data time="7"><a class="pointer">7 days</a></li>

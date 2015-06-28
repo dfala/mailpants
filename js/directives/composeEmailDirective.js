@@ -11,7 +11,7 @@ angular.module('mailPants')
         emailService.sendBatch(emailBody)
         .then(function (response) {
           dataStorage.messageSuccess();
-          $location.path('/email-list');
+          $location.path('/dashboard');
         })
         .catch(function (err) {
           // <p class="bg-danger">...</p>
