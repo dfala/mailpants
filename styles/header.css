@@ -7,3 +7,10 @@ header {
 	display: flex;
 	justify-content: space-between;
 }
+
+.logout-header {
+	float: right;
+}
+	.logout-header:before {
+		content: none !important;
+	}
