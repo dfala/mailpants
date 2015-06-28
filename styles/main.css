@@ -57,6 +57,7 @@ h1, h2, h3, h4, p {
 	width: 800px;
 	margin: 0 auto;
 	padding: 20px;
+	word-break: break-all;
 
 	border: 1px solid #DEDEDE;
 	background-color: #fff;
@@ -85,7 +86,7 @@ h1, h2, h3, h4, p {
 	margin: 0 auto;
 	border-radius: 2px;
   	box-shadow: 0px 0px 3px -1px #000;
-  	
+
 	position: fixed;
 	top: 40px;
 	right: 15%;
@@ -95,3 +96,7 @@ h1, h2, h3, h4, p {
 	.bg-success .close {
 		margin-left: 20px;
 	}
+
+.pointer {
+	cursor: pointer;
+}

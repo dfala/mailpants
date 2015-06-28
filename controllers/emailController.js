@@ -3,7 +3,9 @@ var exports = module.exports = {};
 // Dependencies
 var Mandrill = require('../models/mandrill.js');
 var EmailList = require('../models/emailList.js');
+var UserInfo = require('../models/userInfo.js');
 
+// Heavy lifting
 exports.send = function (req, res) {
 	var error = function () { res.status(500).send('ERROR: Email(s) not sent.'); }
 	var success = function (result) { res.json(result); }
@@ -34,4 +36,13 @@ exports.deleteList = function (req, res) {
 		if (err) return res.status(500).send(err);
 		return res.json(result);
 	})
+}
+
+exports.getUserInfo = function (req, res) {
+	var userEmail = req.params.userEmail;
+
+	var error = function (err) { res.status(500).send(err); }
+	var success = function (result) { res.json(result) }
+
+	UserInfo.getInfo(userEmail, error, success);
 }

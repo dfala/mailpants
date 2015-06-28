@@ -17,11 +17,20 @@ app.use(bodyParser());
 // Controllers
 var EmailController = require('./controllers/emailController.js');
 
-// RESTful api
+//////////////////
+// RESTful API
+//////////////////
+
+// Sending emails
 app.post('/email', EmailController.send);
+// List management
 app.post('/emailList', EmailController.saveList);
 app.get('/emailLists/:userEmail', EmailController.getLists);
 app.delete('/api/list/:listId', EmailController.deleteList);
+// User management
+app.get('/api/userinfo/:userEmail', EmailController.getUserInfo);
+
+//////////////////
 
 // Connections
 var mongooseUri = 'mongodb://localhost/mailpants';

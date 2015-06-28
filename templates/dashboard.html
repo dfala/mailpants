@@ -1,0 +1,61 @@
+<header-template></header-template>
+
+<div class="main-container" dashboard-directive>
+  <ul class="nav nav-tabs nav-justified" id="nav-menu">
+    <li role="presentation" choose-data time="all" class="active"><a class="pointer">All time</a></li>
+    <li role="presentation" choose-data time="7"><a class="pointer">Last 7 days</a></li>
+    <li role="presentation" choose-data time="30"><a class="pointer">Last 30 days</a></li>
+    <li role="presentation" choose-data time="60"><a class="pointer">Last 60 days</a></li>
+    <li role="presentation" choose-data time="90"><a class="pointer">Last 90 days</a></li>
+  </ul>
+
+  <div ng-show="displayAll">
+    <h3>All time metrics</h3>
+    <p> Emails sent: {{allUserData.sent}} </p>
+    <p> Clicks: {{allUserData.clicks}} </p>
+    <p> Complaints: {{allUserData.complaints}} </p>
+    <p> Bounces: {{allUserData.hard_bounces}} </p>
+    <p> Opens: {{allUserData.opens}} </p>
+    <p> Unsubscribes: {{allUserData.unsubs}} </p>
+  </div>
+
+  <div ng-show="displayLast7">
+    <h3>Last 7 days</h3>
+    <p> Emails sent: {{allUserData.stats.last_7_days.sent}} </p>
+    <p> Clicks: {{allUserData.stats.last_7_days.clicks}} </p>
+    <p> Complaints: {{allUserData.stats.last_7_days.complaints}} </p>
+    <p> Bounces: {{allUserData.stats.last_7_days.hard_bounces}} </p>
+    <p> Opens: {{allUserData.stats.last_7_days.opens}} </p>
+    <p> Unsubscribes: {{allUserData.stats.last_7_days.unsubs}} </p>
+  </div>
+
+  <div ng-show="displayLast30">
+    <h3>Last 30 days</h3>
+    <p> Emails sent: {{allUserData.stats.last_7_days.sent}} </p>
+    <p> Clicks: {{allUserData.stats.last_30_days.clicks}} </p>
+    <p> Complaints: {{allUserData.stats.last_30_days.complaints}} </p>
+    <p> Bounces: {{allUserData.stats.last_30_days.hard_bounces}} </p>
+    <p> Opens: {{allUserData.stats.last_30_days.opens}} </p>
+    <p> Unsubscribes: {{allUserData.stats.last_30_days.unsubs}} </p>
+  </div>
+
+  <div ng-show="displayLast60">
+    <h3>Last 60 days</h3>
+    <p> Emails sent: {{allUserData.stats.last_7_days.sent}} </p>
+    <p> Clicks: {{allUserData.stats.last_60_days.clicks}} </p>
+    <p> Complaints: {{allUserData.stats.last_60_days.complaints}} </p>
+    <p> Bounces: {{allUserData.stats.last_60_days.hard_bounces}} </p>
+    <p> Opens: {{allUserData.stats.last_60_days.opens}} </p>
+    <p> Unsubscribes: {{allUserData.stats.last_60_days.unsubs}} </p>
+  </div>
+
+  <div ng-if="displayLast90">
+    <h3>Last 90 days</h3>
+    <p> Emails sent: {{allUserData.stats.last_7_days.sent}} </p>
+    <p> Clicks: {{allUserData.stats.last_90_days.clicks}} </p>
+    <p> Complaints: {{allUserData.stats.last_90_days.complaints}} </p>
+    <p> Bounces: {{allUserData.stats.last_90_days.hard_bounces}} </p>
+    <p> Opens: {{allUserData.stats.last_90_days.opens}} </p>
+    <p> Unsubscribes: {{allUserData.stats.last_90_days.unsubs}} </p>
+  </div>
+</div>
