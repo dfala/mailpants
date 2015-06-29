@@ -1,14 +1,17 @@
 angular.module('mailPants')
 
-.service('emailService', function ($http, $q, dataStorage, $rootScope) {
+.service('emailService',
+function ($http, $q, dataStorage, $rootScope, emailWrapper) {
 	var service = {};
 
 	// Compose emails
 	service.sendBatch = function (emailBody) {
 		var deferred = $q.defer();
+
+		var htmlBody = emailWrapper.topWrapper() + emailBody.html + emailWrapper.bottomWrapper();
 		var email = {
 			subject: emailBody.subject,
-			html: emailBody.html
+			html: htmlBody
 		}
 
 		//TODO: refactor

@@ -8,7 +8,9 @@ var mandrill_client = new mandrill.Mandrill(keys.mandrill);
 // Heavy lifting
 exports.sendEmail = function (body, err, success) {
     if (!body.html && !body.subject) return err();
-    
+
+    return console.log(body.html);
+
     message.html = body.html;
     message.subject = body.subject;
     message.to = body.to;

@@ -6,6 +6,10 @@ angular.module('mailPants', ['textAngular', 'ngRoute'])
 		templateUrl: '/templates/home.html'
 	})
 
+	.when('/login', {
+		templateUrl: '/templates/login.html'
+	})
+
 	.when('/email-list', {
 		templateUrl: '/templates/emailList.html'
 	})
