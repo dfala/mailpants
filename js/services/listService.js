@@ -6,7 +6,7 @@ angular.module('mailPants')
 	// Email lists
 	service.getLists = function (userEmail) {
 		var deferred = $q.defer();
-		var uri = '/emailLists/' + userEmail;
+		var uri = '/api/emailLists/' + userEmail;
 
 		$http.get(uri)
 		.success(function (response) {
@@ -31,7 +31,7 @@ angular.module('mailPants')
 		newList.emailCount = emailArray.length;
 		delete newList['addedEmails'];
 
-		$http.post('/emailList', newList)
+		$http.post('/api/emailList', newList)
 		.success(function (response) {
 			deferred.resolve(response);
 		})

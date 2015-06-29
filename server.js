@@ -14,6 +14,9 @@ app.use(express.static(__dirname + '/'));
 app.use(cors());
 app.use(bodyParser());
 
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
+
 // Controllers
 var EmailController = require('./controllers/emailController.js');
 
@@ -22,10 +25,10 @@ var EmailController = require('./controllers/emailController.js');
 //////////////////
 
 // Sending emails
-app.post('/email', EmailController.send);
+app.post('/api/email', EmailController.send);
 // List management
-app.post('/emailList', EmailController.saveList);
-app.get('/emailLists/:userEmail', EmailController.getLists);
+app.post('/api/emailList', EmailController.saveList);
+app.get('/api/emailLists/:userEmail', EmailController.getLists);
 app.delete('/api/list/:listId', EmailController.deleteList);
 // User management
 app.get('/api/userinfo/:userEmail', EmailController.getUserInfo);

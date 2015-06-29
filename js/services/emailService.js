@@ -27,7 +27,7 @@ angular.module('mailPants')
 		email.to = toField;
 
 
-		$http.post('/email', email)
+		$http.post('/api/email', email)
 		.success(function (response) {
 			deferred.resolve(response);
 		})

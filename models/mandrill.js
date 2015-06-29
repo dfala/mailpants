@@ -17,6 +17,7 @@ exports.sendEmail = function (body, err, success) {
         'Reply-To': body.from_email
     }
 
+
     mandrill_client.messages.send({"message": message, "async": async, "ip_pool": ip_pool}, function(result) {
         console.log(result);
         success(result)
@@ -27,13 +28,11 @@ exports.sendEmail = function (body, err, success) {
 }
 
 var message = {
-    "text": "Example text content",
+    "text": "Fallback text content -- email body not sent correctly",
     "from_name": "Daniel Falabella",
 };
 var async = true;
 var ip_pool = "Main Pool";
-
-
 
 
 
@@ -55,3 +54,19 @@ var ip_pool = "Main Pool";
 //         "Reply-To": "dnlfala@gmail.com"
 //     }
 // };
+
+
+
+// Example attachment:
+// message.attachments = [{
+//     "type": "image/png",
+//     "name": "IMAGECID",
+//     "content":  image64EncondedString
+// }]
+
+
+// message.images = [{
+//     "type": "image/png",
+//     "name": "IMAGECID",
+//     "content":  image64EncondedString
+// }]
