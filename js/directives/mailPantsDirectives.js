@@ -1,11 +1,16 @@
 angular.module('mailPants')
 
-.directive('headerTemplate', function () {
+.directive('headerTemplate', function ($rootScope, $location) {
 	return {
 		restrict: 'E',
+		scope: true,
 		templateUrl: '/templates/headerTemplate.html',
 		link: function (scope, elem, attrs) {
-			// TODO: log use out on logout()
+			// TODO: refactor once user auth
+			scope.logout = function () {
+				$rootScope.userEmail = undefined;
+				$location.path('/#/');
+			}
 		}
 	}
 })
