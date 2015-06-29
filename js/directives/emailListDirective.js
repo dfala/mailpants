@@ -8,8 +8,7 @@ function (listService, dataStorage, $location, $rootScope, $timeout) {
 		link: function (scope, elem, attrs) {
 
 			// TODO: change this once user authentication
-			var userEmail = 'yofala@gmail.com';
-			$rootScope.userEmail = userEmail;
+			var userEmail = $rootScope.userEmail;
 
 			var getLists = function () {
 				listService.getLists(userEmail)

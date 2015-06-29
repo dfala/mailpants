@@ -7,7 +7,7 @@ angular.module('mailPants')
     link: function (scope, elem, attrs) {
 
       //TODO: change this once we can login users:
-      var userEmail = $rootScope.userEmail = 'yofala@gmail.com';
+      var userEmail = $rootScope.userEmail;
       scope.displayAll = true;
 
       // Check for email sucess message

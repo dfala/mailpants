@@ -14,7 +14,7 @@ function ($http, $q, dataStorage, $rootScope, emailWrapper) {
 			html: htmlBody
 		}
 
-		//TODO: refactor
+		//TODO: refactor once user logs in
 		email.from_email = $rootScope.userEmail;
 
 		var emailList = dataStorage.serveList().emails;
