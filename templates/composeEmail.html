@@ -2,7 +2,8 @@
 	<header-template></header-template>
 	
 	<div class="main-container text-editor">
-		<input placeholder="Subject Line" class="form-control" ng-model="emailBody.subject"/>
+		<input id="email-subject-line" placeholder="Subject Line"
+			class="form-control" ng-model="emailBody.subject"/>
 		<br>
 		<text-angular ng-model="emailBody.html"></text-angular>
 		<button class="btn btn-default" ng-click="sendEmail(emailBody)">Send email</button>

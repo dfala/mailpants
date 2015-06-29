@@ -41,7 +41,6 @@ angular.module('mailPants')
       elem.click(function (event) {
         $('#nav-menu').find('li').removeClass('active');
         elem.addClass('active');
-        console.log(elem);
         checkStatus();
       })
 

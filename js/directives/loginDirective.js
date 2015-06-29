@@ -5,7 +5,6 @@ angular.module('mailPants')
 		restrict: 'A',
 		scope: true,
 		link: function (scope, elem, attrs) {
-			console.log("hi guys!");
 
 			scope.loginUser = function (userEmail) {
 				$rootScope.userEmail = userEmail;

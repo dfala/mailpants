@@ -1,10 +1,14 @@
 angular.module('mailPants')
 
-.directive('composeEmail', function (emailService, dataStorage, $location) {
+.directive('composeEmail', function (emailService, $timeout, dataStorage, $location) {
   return {
     restrict: 'A',
     scope: true,
     link: function (scope, elem, attrs) {
+
+      $timeout(function () {
+        $('#email-subject-line').focus();
+      })
 
       scope.sendEmail = function (emailBody) {
         if (!emailBody) alert('Come on man... add something!');
