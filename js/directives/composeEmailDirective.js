@@ -1,6 +1,6 @@
 angular.module('mailPants')
 
-.directive('composeEmail', function (emailService, $timeout, dataStorage, $location) {
+.directive('composeEmail', function ($http, emailService, $timeout, dataStorage, $location) {
   return {
     restrict: 'A',
     scope: true,
@@ -8,6 +8,19 @@ angular.module('mailPants')
 
       $timeout(function () {
         $('#email-subject-line').focus();
+
+        // testing purposes
+        elem.contents().find("div[contenteditable='true']").each(function() {
+            var conteEditable = $(this);
+            $http.get('/api/template')
+            .success(function (response){
+              var templateHtml = response[0].code;
+              conteEditable.append(templateHtml);
+            })
+            .error(function (err) {
+              throw new Error(err);
+            })
+        });
       })
 
       scope.sendEmail = function (emailBody) {

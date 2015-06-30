@@ -19,22 +19,25 @@ app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
 // Controllers
-var EmailController = require('./controllers/emailController.js');
+var MainController = require('./controllers/mainController.js');
+var ListController = require('./controllers/listsController.js');
 
 //////////////////
 // RESTful API
 //////////////////
 
 // Sending emails
-app.post('/api/email', EmailController.send);
+app.post('/api/email', MainController.send);
 // List management
-app.post('/api/emailList', EmailController.saveList);
-app.get('/api/emailLists/:userEmail', EmailController.getLists);
-app.delete('/api/list/:listId', EmailController.deleteList);
-// User management
-app.get('/api/userinfo/:userEmail', EmailController.getUserInfo);
+app.post('/api/emailList', ListController.saveList);
+app.get('/api/emailLists/:userEmail', ListController.getLists);
+app.delete('/api/list/:listId', ListController.deleteList);
 // Unsubscribe email
-app.put('/api/unsubscribe', EmailController.unsubscribe);
+app.put('/api/unsubscribe', ListController.unsubscribe);
+// User management
+app.get('/api/userinfo/:userEmail', MainController.getUserInfo);
+// Templates endpoints
+app.get('/api/template', MainController.getTemplate);
 
 //////////////////
 

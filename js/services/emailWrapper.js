@@ -13,7 +13,7 @@ angular.module('mailPants')
 	service.bottomWrapper = function (listId) {
 		var uri = "http://localhost:3000/#/unsubscribe/" + listId + "/*|EMAIL|*";
 
-		var bottomWrapper = '</div><p style="font-size: 12px;"><a href="' + uri + '" target="_blank">unsubscribe</a></p>'
+		var bottomWrapper = '</div><p style="font-size: 10px;"><a href="' + uri + '" target="_blank">unsubscribe</a></p>'
 						+ '</div>';
 
 		return bottomWrapper;

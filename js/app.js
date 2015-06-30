@@ -21,13 +21,13 @@ angular.module('mailPants', ['textAngular', 'ngRoute'])
 	})
 
 	.when('/compose-email', {
-		templateUrl: '/templates/composeEmail.html',
-		resolve: {
-			emailUser: function ($rootScope, $location) {
-				if (!$rootScope.userEmail) return $location.path('/login');
-				return $rootScope.userEmail;
-			}
-		}
+		templateUrl: '/templates/composeEmail.html'
+		// resolve: {
+		// 	emailUser: function ($rootScope, $location) {
+		// 		if (!$rootScope.userEmail) return $location.path('/login');
+		// 		return $rootScope.userEmail;
+		// 	}
+		// }
 	})
 
 	.when('/dashboard', {
@@ -38,6 +38,10 @@ angular.module('mailPants', ['textAngular', 'ngRoute'])
 				return $rootScope.userEmail;
 			}
 		}
+	})
+
+	.when('/template', {
+		templateUrl: '/templates/emailTemplate.html'
 	})
 
 	.when('/unsubscribe/:listId/:unsubEmail', {
@@ -52,16 +56,6 @@ angular.module('mailPants', ['textAngular', 'ngRoute'])
 			}
 		}
 	})
-
-
-
-
-
-
-
-
-
-
 
 	.otherwise('/');
 });
