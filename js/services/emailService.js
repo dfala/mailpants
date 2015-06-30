@@ -8,7 +8,7 @@ function ($http, $q, dataStorage, $rootScope, emailWrapper) {
 	service.sendBatch = function (emailBody) {
 		var deferred = $q.defer();
 
-		var htmlBody = emailWrapper.topWrapper() + emailBody.html + emailWrapper.bottomWrapper();
+		var htmlBody = emailWrapper.topWrapper() + emailBody.html + emailWrapper.bottomWrapper(dataStorage.serveList()._id);
 		var email = {
 			subject: emailBody.subject,
 			html: htmlBody
@@ -16,7 +16,7 @@ function ($http, $q, dataStorage, $rootScope, emailWrapper) {
 
 		//TODO: refactor once user logs in
 		email.from_email = $rootScope.userEmail;
-
+		
 		var emailList = dataStorage.serveList().emails;
 		var toField = [];
 

@@ -54,27 +54,21 @@ exports.unsubscribe = function (req, res) {
 	EmailList.findOne({
 		"_id": listId
 	}, function (err, list) {
-		console.log(list);
+		// remove item from array
+		list.emails.remove(unsubEmail);
 
-		// remove email from array
-		var tempList = [];
-		list.emails.forEach(function (email, index) {
-			if (email !== unsubEmail) return tempList.push(email);
-		})
-
-		list.emails = tempList;
-
-		// save email to unsubscribe array
-		list.unsubs.push(unsubEmail);
-
-		// update email count
-		list.emailCount = list.emailCount - 1;
+		if (list.unsubs.indexOf(unsubEmail) < 0) {
+			// save email to unsubscribe array
+			list.unsubs.push(unsubEmail);
+			// update email count
+			list.emailCount = list.emailCount - 1;
+		}
 
 		// save updated list
 		list.save(function (err, result) {
 			if (err) return res.status(500).send(err);
 			// console.log(result);
-			return res.json(result);
+			return res.send("Successfully unsubscribed");
 		})
 	})
 }

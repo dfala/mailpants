@@ -24,7 +24,9 @@ angular.module('mailPants')
 		var deferred = $q.defer();
 
 		// clean list object
+		newList.addedEmails = newList.addedEmails.replace(/ /g,'');
 		var emailArray = newList.addedEmails.split(',');
+
 		if(!emailArray[emailArray.length - 1]) emailArray.pop();
 
 		newList.emails = emailArray;
