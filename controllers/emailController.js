@@ -46,3 +46,35 @@ exports.getUserInfo = function (req, res) {
 
 	UserInfo.getInfo(userEmail, error, success);
 }
+
+exports.unsubscribe = function (req, res) {
+	var listId = req.body.listId;
+	var unsubEmail = req.body.unsubEmail;
+
+	EmailList.findOne({
+		"_id": listId
+	}, function (err, list) {
+		console.log(list);
+
+		// remove email from array
+		var tempList = [];
+		list.emails.forEach(function (email, index) {
+			if (email !== unsubEmail) return tempList.push(email);
+		})
+
+		list.emails = tempList;
+
+		// save email to unsubscribe array
+		list.unsubs.push(unsubEmail);
+
+		// update email count
+		list.emailCount = list.emailCount - 1;
+
+		// save updated list
+		list.save(function (err, result) {
+			if (err) return res.status(500).send(err);
+			// console.log(result);
+			return res.json(result);
+		})
+	})
+}

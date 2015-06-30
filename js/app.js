@@ -40,5 +40,28 @@ angular.module('mailPants', ['textAngular', 'ngRoute'])
 		}
 	})
 
+	.when('/unsubscribe/:listId/:unsubEmail', {
+		templateUrl: '/templates/unsubscribe.html',
+		controller: 'unsubscribeController',
+		resolve: {
+			listId: function ($route) {
+				return $route.current.params.listId;
+			},
+			unsubEmail: function ($route) {
+				return $route.current.params.unsubEmail;
+			}
+		}
+	})
+
+
+
+
+
+
+
+
+
+
+
 	.otherwise('/');
 });

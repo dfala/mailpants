@@ -33,6 +33,8 @@ app.get('/api/emailLists/:userEmail', EmailController.getLists);
 app.delete('/api/list/:listId', EmailController.deleteList);
 // User management
 app.get('/api/userinfo/:userEmail', EmailController.getUserInfo);
+// Unsubscribe email
+app.put('/api/unsubscribe', EmailController.unsubscribe);
 
 //////////////////
 
