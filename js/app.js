@@ -20,6 +20,16 @@ angular.module('mailPants', ['textAngular', 'ngRoute'])
 		}
 	})
 
+	.when('/templates', {
+		templateUrl: '/templates/emailTemplates.html'
+		// resolve: {
+		// 	emailUser: function ($rootScope, $location) {
+		// 		if (!$rootScope.userEmail) return $location.path('/login');
+		// 		return $rootScope.userEmail;
+		// 	}
+		// }
+	})
+
 	.when('/compose-email', {
 		templateUrl: '/templates/composeEmail.html'
 		// resolve: {

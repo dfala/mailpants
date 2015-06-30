@@ -1,0 +1,77 @@
+.templates-section {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+}
+
+.template-container {
+  width: 90%;
+  margin: 0 auto;
+  padding: 32px;
+  display: flex;
+  justify-content: space-between;
+}
+
+  .templates-section .pre-template {
+    width: 380px;
+    height: 250px;
+    padding: 20px;
+    margin: 0 auto;
+    border-radius: 2px;
+    border: 1px solid #A3A3A3;
+    background-color: #fff;
+    overflow: auto;
+    display: inline-block;
+  }
+
+  .pre-template.blue-border {
+    border: 1px solid #2ecc71;
+  }
+
+  .pre-template .screenshot {
+    height: 100%;
+    width: 50%;
+    display: inline-block;
+    text-align: center;
+  }
+
+    .screenshot img {
+      height: 100%;
+      border: 1px solid #BDBDBD;
+    }
+
+  .pre-template .action-items {
+    display: inline-block;
+    pointer-events: all;
+    position: relative;
+    height: 100%;
+    width: 42%;
+    float: right;
+  }
+
+  .pre-template .action-items p {
+    position: absolute;
+    top: 0;
+    font-size: 18px;
+  }
+
+  .pre-template .action-items button {
+    position: absolute;
+    bottom: 0;
+  }
+
+
+.footer-process {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  /*background-color: #000;*/
+}
+
+
+
+
+
+  .test {
+
+  }

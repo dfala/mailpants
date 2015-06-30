@@ -14,3 +14,17 @@ angular.module('mailPants')
 		}
 	}
 })
+
+.directive('hoverTemplate', function () {
+	return {
+		restrict: 'A',
+		link: function ($scope, elem, atts) {
+			elem.hover(function (event) {
+				console.log(event);
+				elem.addClass('blue-border');
+			}, function (event) {
+				elem.removeClass('blue-border');
+			})
+		}
+	}
+});

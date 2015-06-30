@@ -13,7 +13,7 @@ html, body {
 	height: 100%;
 	width: 100%;
 	box-sizing: border-box;
-	background-color: #f6f6ef;
+	background-color: #f6f6ef !important;
 	font-family: 'Open Sans', sans-serif;
 }
 
