@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/dfala/mailpants",
   "dependencies": {
+    "aws-sdk": "^2.1.36",
     "body-parser": "^1.13.1",
     "cors": "^2.7.1",
     "express": "^4.13.0",
