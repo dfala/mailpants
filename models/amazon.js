@@ -1,7 +1,7 @@
 var Tokens = require('./keys.js');
 
 var AWS = require('aws-sdk');
-// Had amazon aws config
+// Hard amazon aws config
 AWS.config.update({
 	  accessKeyId: Tokens.amazonAccess
 	, secretAccessKey: Tokens.amazonSecret
@@ -13,26 +13,20 @@ var keys = require('./keys.js');
 
 var exports = module.exports = {};
 
-exports.getObject = function () {
+exports.getObject = function (req, res) {
+	
+	var imageKey = req.params.imageKey;
+	
 	//Key below refers to imageName.jpg
-	var params = {Bucket: 'mailpants', Key: "Profile Picture.png"};
+	// var params = {Bucket: 'mailpants', Key: "Profile Picture.png"};
+	var params = {Bucket: 'mailpants', Key: imageKey};
 
 	// Get image --> returns buffer
 	s3.getObject(params, function(err, data) {
-		if (err) return console.log(err);
-		return console.log("Success...?!", data);
+		if (err) return res.status(500).send(err);
+		
+		var respond = data;
+		respond.Body = respond.Body.toString('base64');
+		return res.send(respond);
 	});
-
-
-	// Get list of buckets
-	// s3.listBuckets(function(err, data) {
-	//   if (err) { console.log("Error:", err); }
-	//   else {
-	//     for (var index in data.Buckets) {
-	//       var bucket = data.Buckets[index];
-	//       console.log("Bucket: ", bucket.Name, ' : ', bucket.CreationDate);
-	//     }
-	//   }
-	// });
-
 }

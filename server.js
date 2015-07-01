@@ -21,10 +21,7 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 // Controllers
 var MainController = require('./controllers/mainController.js');
 var ListController = require('./controllers/listsController.js');
-
-// FOR TESTING ONLY
-var Amazon = require('./models/amazon.js');
-Amazon.getObject();
+var AmazonController = require('./controllers/AmazonController.js');
 
 
 //////////////////
@@ -43,6 +40,8 @@ app.put('/api/unsubscribe', ListController.unsubscribe);
 app.get('/api/userinfo/:userEmail', MainController.getUserInfo);
 // Templates endpoints
 app.get('/api/template', MainController.getTemplate);
+// Amazon S3
+app.get('/api/image/:imageKey', AmazonController.getImage);
 
 //////////////////
 
