@@ -32,13 +32,22 @@ exports.getImage = function (req, res) {
 
 exports.saveImage = function (req, res) {
 	// var imageInfo = new Buffer(req.body, 'base64');
-	var params = { Bucket: 'mailpants', Key: req.body.imageName, Body: req.body.imageBody };
+	buf = new Buffer(req.body.imageBody.replace(/^data:image\/\w+;base64,/, ""), 'base64');
+	
+	var params = {
+		  Bucket: 'mailpants'
+		, Key: req.body.imageName
+		, Body: buf
+		, ContentType: 'image/png'
+		, ACL: 'public-read'
+	};
 
 	var s3 = new AWS.S3();
 
     s3.upload(params, function(err, data) {
       if (err) {
       	console.log(err);
+      	// s3.change_content_type('mailpants', req.body.imageName, 'image/png');
       	return res.status(500).send(err);
       } 
       return res.send('success sauce');
