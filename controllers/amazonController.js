@@ -5,5 +5,9 @@ var Amazon = require('../models/amazon.js');
 
 // Heavy lifting
 exports.getImage = function (req, res) {
-	Amazon.getObject(req, res);
+	Amazon.getImage(req, res);
+}
+
+exports.postImage = function (req, res) {
+	Amazon.saveImage(req, res);
 }

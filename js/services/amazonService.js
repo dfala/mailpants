@@ -7,7 +7,7 @@ angular.module('mailPants')
 	service.getImage = function (imageName) {
 		var deferred = $q.defer();
 
-		var uri = '/api/image/' + encodeURI(imageName);
+		var uri = '/api/newimage/' + encodeURI(imageName);
 		$http.get(uri)
 		.success(function (response) {
 			console.info(response);

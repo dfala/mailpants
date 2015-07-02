@@ -1,6 +1,13 @@
 <div compose-email>
 	<header-template></header-template>
 	
+	<div class="main-container">
+		<h3>Upload an image</h3>
+		<input class="form-controll" type="file" fileread="uploadme">
+	</div>
+
+	<br><br>
+
 	<div class="main-container text-editor">
 		<input id="email-subject-line" placeholder="Subject Line"
 			class="form-control" ng-model="emailBody.subject"/>
