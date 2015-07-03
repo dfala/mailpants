@@ -6,7 +6,9 @@ angular.module('mailPants')
     scope: true,
     link: function (scope, elem, attrs) {
 
-      // scope.imagesSelector = true;
+      $timeout(function () {
+        $('#email-subject-line').focus();
+      })
 
       scope.sendEmail = function (emailBody) {
         if (!emailBody) alert('Come on man... add something!');
@@ -40,20 +42,17 @@ angular.module('mailPants')
 
 // DEPRECATED
 
-// $timeout(function () {
-//   $('#email-subject-line').focus();
+// elem.contents().find("div[contenteditable='true']").each(function() {
+//     var conteEditable = $(this);
+//     $http.get('/api/template')
+//     .success(function (response){
+//       var templateHtml = response[0].code;
+//       conteEditable.append(templateHtml);
+//     })
+//     .error(function (err) {
+//       throw new Error(err);
+//     })
+// });
 
-//   elem.contents().find("div[contenteditable='true']").each(function() {
-//       var conteEditable = $(this);
-//       $http.get('/api/template')
-//       .success(function (response){
-//         var templateHtml = response[0].code;
-//         conteEditable.append(templateHtml);
-//       })
-//       .error(function (err) {
-//         throw new Error(err);
-//       })
-//   });
-// })
 
 

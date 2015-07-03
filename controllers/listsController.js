@@ -19,7 +19,7 @@ exports.saveList = function (req, res) {
 			if (err) return res.stats(500).send(err);
 
 			userDoc.lists.push(result._id);
-			userDoc.save(function (err, updatedDoc) {
+			userDoc.save(function (err, oldDoc) {
 				if (err) return res.stats(500).send(err);
 				return res.json(result);
 			})

@@ -4,6 +4,7 @@ var exports = module.exports = {};
 var mandrill = require('mandrill-api/mandrill');
 var keys = require('./keys.js');
 var User = require('./User.js');
+var Amazon = require('./amazon.js');
 var mandrill_client = new mandrill.Mandrill(keys.mandrill);
 
 exports.getMandrillInfo = function (userEmail, error, success) {
@@ -35,6 +36,10 @@ exports.createUser = function (req, res) {
 			var newUser = new User(req.body);
 			newUser.save(function (err, result) {
 				if (err) return res.status(500).send(err);
+
+				// Create amazon folder for user
+				//Amazon.createFolder(req, res, result);
+
 				return res.json(result);
 			});
 		} else {

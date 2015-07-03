@@ -14,13 +14,13 @@
 			<input class="form-controll" type="file" fileread="uploadme" accept="image/*">
 		</div>
 
-		<div class="pre-template" ng-repeat="image in images">
+		<div class="pre-template" ng-repeat="image in images" ng-click="addImage(image.Location)">
 			<div class="screenshot">
-				<img src="/styles/images/test-template.png" />
+				<img ng-src="{{image.Location}}" />
 			</div>
 			<div class="action-items">
-				<p>Template Name</p>
-				<button class="btn btn-default">Use template</button>
+				<p>Name</p>
+				<button class="btn btn-default">Add image</button>
 				</div>
 			</div>
 

@@ -49,7 +49,6 @@ app.get('/api/userinfo/:userEmail', MainController.userMandrillInfo);
 app.get('/api/template', MainController.getTemplate);
 
 // Amazon S3
-app.get('/api/images', AmazonController.getAllImages);
 app.get('/api/image/:imageKey', AmazonController.getImage);
 app.post('/api/newimage', AmazonController.postImage);
 

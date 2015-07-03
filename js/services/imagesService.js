@@ -1,6 +1,6 @@
 angular.module('mailPants')
 
-.factory('imagesService', function ($http, $q) {
+.factory('imagesService', function ($http, $q, $rootScope) {
 	var service = {};
 
 	service.storeImage = function (imageData, fileName) {
@@ -9,12 +9,12 @@ angular.module('mailPants')
 		// imageData = imageData.slice(imageData.indexOf('base64,') + 7);
 		var imageExtension = imageData.split(';')[0].split('/');
 		imageExtension = imageExtension[imageExtension.length - 1];
-		return console.log(imageExtension);
 
 		var newImage = {
 			imageName: fileName,
 			imageBody: imageData,
-			imageExtension: imageExtension
+			imageExtension: imageExtension,
+			userEmail: $rootScope.userEmail
 		}
 
 		$http.post('/api/newimage', newImage)
@@ -35,26 +35,6 @@ angular.module('mailPants')
 		$http.get(uri)
 		.success(function (response) {
 			console.info(response);
-			response.Body = 'data:' + response.ContentType + ';base64,' + response.Body;
-			deferred.resolve(response);
-		})
-		.error(function (err) {
-			deferred.reject(err);
-		});
-
-
-		return deferred.promise;
-	}
-
-
-	// TODO This is broken
-	service.getAllImages = function () {
-		var deferred = $q.defer();
-
-		// needs to change
-		var uri = '/api/newimage/' + encodeURI(imageName);
-		$http.get(uri)
-		.success(function (response) {
 			response.Body = 'data:' + response.ContentType + ';base64,' + response.Body;
 			deferred.resolve(response);
 		})

@@ -1,6 +1,6 @@
 angular.module('mailPants')
 
-.directive('imagesSection', function (imagesService) {
+.directive('imagesSection', function (imagesService, $rootScope) {
 	return {
 		restrict: 'E',
 		scope: {
@@ -13,19 +13,18 @@ angular.module('mailPants')
 				scope.imagesSelector = false;
 			}
 
-			// get images
-			scope.getAllImages = function () {
-				imagesService.getAllImages()
-				.then(function (response) {
-					console.log(response);
-					
-					scope.images = response;
-				})
-				.catch(function (err) {
-					throw new Error(err);
-				});
-			}
+			// loading all images for user
+			scope.images = $rootScope.activeUser.images;
 
+
+			scope.addImage = function (imgUrl) {
+		        $('#compose-email-section').find("div[contenteditable='true']").each(function() {
+		        	var conteEditable = $(this);
+		        	var newImage = '<img src="' + imgUrl + '" style="max-width: 100%;"/>';
+			       	conteEditable.append(newImage);
+			       	scope.closeImagesSelector();
+			    });
+			}
 		}
 	}
 })

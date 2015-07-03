@@ -31,13 +31,13 @@ angular.module('mailPants', ['textAngular', 'ngRoute'])
 	})
 
 	.when('/compose-email', {
-		templateUrl: '/templates/composeEmail.html'
-		// resolve: {
-		// 	emailUser: function ($rootScope, $location) {
-		// 		if (!$rootScope.userEmail) return $location.path('/login');
-		// 		return $rootScope.userEmail;
-		// 	}
-		// }
+		templateUrl: '/templates/composeEmail.html',
+		resolve: {
+			emailUser: function ($rootScope, $location) {
+				if (!$rootScope.userEmail) return $location.path('/login');
+				return $rootScope.userEmail;
+			}
+		}
 	})
 
 	.when('/dashboard', {

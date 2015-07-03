@@ -11,6 +11,7 @@ angular.module('mailPants')
 				.then(function (response) {
 					if (response.noUser) return alert('No user found');
 
+					$rootScope.activeUser = response;
 					$rootScope.userEmail = response.email;
 					$location.path('/email-list');
 				})
@@ -28,7 +29,7 @@ angular.module('mailPants')
 					$location.path('/email-list');
 				})
 				.catch(function (err) {
-					console.log(err);
+					console.error(err);
 					// throw new Error(err);
 				});
 			}
