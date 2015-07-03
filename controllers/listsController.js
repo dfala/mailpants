@@ -3,14 +3,27 @@ var exports = module.exports = {};
 // Dependencies
 var Mandrill = require('../models/mandrill.js');
 var EmailList = require('../models/emailList.js');
+var User = require('../models/User.js');
 
 
 // Heavy lifting
 exports.saveList = function (req, res) {
 	var newEmailList = new EmailList(req.body);
+
+	// Save new list
 	newEmailList.save(function (err, result) {
-		if (err) return res.status(500).send(err);
-		return res.json(result);
+		if (err) return res.status(500).send(err)
+
+		// Push to User list array
+		User.findOne({ "email": result.userEmail }, function (err, userDoc) {
+			if (err) return res.stats(500).send(err);
+
+			userDoc.lists.push(result._id);
+			userDoc.save(function (err, updatedDoc) {
+				if (err) return res.stats(500).send(err);
+				return res.json(result);
+			})
+		})
 	})
 }
 
@@ -18,16 +31,29 @@ exports.getLists = function (req, res) {
 	var userEmail = req.params.userEmail;
 	EmailList.find({ "userEmail": userEmail }, function (err, result) {
 		if (err) return res.status(500).send(err);
-		// console.log(result);
 		return res.json(result);
 	})
 }
 
 exports.deleteList = function (req, res) {
-	var userId = req.params.listId;
-	EmailList.findByIdAndRemove(userId, function (err, result) {
+	var listId = req.params.listId;
+
+	// Delete list
+	EmailList.findByIdAndRemove(listId, function (err, result) {
 		if (err) return res.status(500).send(err);
-		return res.json(result);
+
+		// Delete list id from User document
+		User.findOne({ "email": result.userEmail }, function (err, userDoc) {
+			if (err) return res.stats(500).send(err);
+
+			userDoc.lists.remove(listId);
+			console.log(userDoc.lists);
+			userDoc.save(function (err, updatedDoc) {
+				if (err) return res.stats(500).send(err);
+				return res.json(result);
+			})
+		})
+
 	})
 }
 

@@ -2,14 +2,24 @@
 	<div><a href="/#/">MailPants</a></div>
 </header>
 
-<div class="login-section" login-directive>
+<div class="login-section" auth-directive>
 	<div class="main-container">
 		
 		<form ng-submit="loginUser(userEmail)">
-			<h4>Login credentials</h4>
+			<h4>Login</h4>
 			<input placeholder="email" class="form-control" ng-model="userEmail">
 			<button class="btn btn-default btn-kameleon">Get me in</button>
 		</form>
 
+		<br><hr><br>
+
+		<form ng-submit="signUpUser(newUser)">
+			<h4>Sign Up</h4>
+			<input placeholder="email" class="form-control" ng-model="newUser.email">
+			<button class="btn btn-default btn-kameleon">Get me in</button>
+		</form>
+
 	</div>
+
 </div>
+

@@ -2,6 +2,7 @@
   display: flex;
   justify-content: center;
   height: 100%;
+  position: relative;
 }
 
 .template-container {
@@ -9,19 +10,22 @@
   margin: 0 auto;
   padding: 32px;
   display: flex;
-  justify-content: space-between;
+  flex-flow: row wrap;
 }
 
   .templates-section .pre-template {
-    width: 380px;
+    width: 350px;
     height: 250px;
     padding: 20px;
     margin: 0 auto;
     border-radius: 2px;
-    border: 1px solid #A3A3A3;
+    border: 1px solid #B0B0C3;
+    box-shadow: 0px 2px 10px -2px #B6B6BF;
     background-color: #fff;
     overflow: auto;
     display: inline-block;
+    position: relative;
+    cursor: pointer;
   }
 
   .pre-template.blue-border {
@@ -49,8 +53,7 @@
     float: right;
   }
 
-  .pre-template .action-items p {
-    position: absolute;
+  .pre-template p {
     top: 0;
     font-size: 18px;
   }

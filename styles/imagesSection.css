@@ -1,0 +1,22 @@
+.images-wrapper {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color: #e4e4ec;
+	z-index: 999;
+	top: 0;
+
+	padding: 25px;
+}
+
+.close-imgselector {
+	position: absolute;
+	right: 0;
+	font-size: 60px;
+	cursor: pointer;
+	color: #808080;
+}
+
+	.close-imgselector:hover {
+		color: #000;
+	}

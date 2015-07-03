@@ -12,6 +12,8 @@ angular.module('mailPants')
                     scope.$apply(function () {
                         var fileread = loadEvent.target.result;
 
+                        // return console.log(loadEvent);
+
                         var tempArray = elem['context'].value.split('\\');
                         var fileName = tempArray[tempArray.length - 1];
 

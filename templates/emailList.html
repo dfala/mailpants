@@ -17,8 +17,12 @@
 
 	<!-- DISPLAY SAVED LISTS -->
 	<div class="main-container space">
+		<div class="row" ng-if="!lists.length">
+			<h4>Your lists of emails will be displayed below!</h4>
+		</div>
 
-		<div class="row border-bottom">
+
+		<div class="row border-bottom" ng-if="lists.length">
 			<div class="col-md-6">
 				<h4>List Name</h4>
 			</div>

@@ -24,27 +24,42 @@ var ListController = require('./controllers/listsController.js');
 var AmazonController = require('./controllers/AmazonController.js');
 
 
-//////////////////
-// RESTful API
-//////////////////
 
-// Sending emails
+////////////////////////////////////
+//////////// REST API //////////////
+////////////////////////////////////
+
+// Users
+app.get('/api/user/:userEmail', MainController.getUserInfo);
+app.post('/api/user', MainController.createUser);
+
+// Emails
 app.post('/api/email', MainController.send);
+
 // List management
-app.post('/api/emailList', ListController.saveList);
 app.get('/api/emailLists/:userEmail', ListController.getLists);
-app.delete('/api/list/:listId', ListController.deleteList);
-// Unsubscribe email
+app.post('/api/emailList', ListController.saveList);
 app.put('/api/unsubscribe', ListController.unsubscribe);
+app.delete('/api/list/:listId', ListController.deleteList);
+
 // User management
-app.get('/api/userinfo/:userEmail', MainController.getUserInfo);
+app.get('/api/userinfo/:userEmail', MainController.userMandrillInfo);
+
 // Templates endpoints
 app.get('/api/template', MainController.getTemplate);
+
 // Amazon S3
+app.get('/api/images', AmazonController.getAllImages);
 app.get('/api/image/:imageKey', AmazonController.getImage);
 app.post('/api/newimage', AmazonController.postImage);
 
-//////////////////
+
+
+////////////////////////////////////
+////////////////////////////////////
+////////////////////////////////////
+
+
 
 // Connections
 var mongooseUri = 'mongodb://localhost/mailpants';
