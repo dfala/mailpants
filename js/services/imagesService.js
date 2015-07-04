@@ -19,7 +19,7 @@ angular.module('mailPants')
 
 		$http.post('/api/newimage', newImage)
 		.success(function (response) {
-			console.info(response);
+			deferred.resolve(response);
 		})
 		.error (function (err) {
 			deferred.reject(err);
