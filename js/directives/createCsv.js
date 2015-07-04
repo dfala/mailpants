@@ -10,10 +10,17 @@ angular.module('mailPants')
 			
 			elem.click(function () {
 				console.log(scope.list);
+				var emails = scope.list.emails;
+
+		    	// prepare CSV data
+		    	emails.unshift("ACTIVE EMAILS");
+		    	emails.push("");
+		    	emails.push("UNSUBSCRIBED");
+		    	emails = emails.concat(scope.list.unsubs);
 
 			    // download stuff
 			    var fileName = scope.list.listName + "_emails.csv";
-			    var buffer = scope.list.emails.join("\n");
+			    var buffer = emails.join("\n");
 			    var blob = new Blob([buffer], {
 			        "type": "text/csv;charset=utf8;"
 			    });
