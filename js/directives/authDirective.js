@@ -6,6 +6,8 @@ angular.module('mailPants')
 		scope: true,
 		link: function (scope, elem, attrs) {
 
+			scope.userEmail = "yofala@gmail.com";
+
 			scope.loginUser = function (userEmail) {
 				userService.getUser(userEmail)
 				.then(function (response) {

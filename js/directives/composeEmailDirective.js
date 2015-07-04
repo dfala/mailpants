@@ -1,13 +1,25 @@
 angular.module('mailPants')
 
-.directive('composeEmail', function ($http, emailService, $timeout, dataStorage, $location) {
+.directive('composeEmail', function ($http, emailService, $timeout, $window, dataStorage, $location) {
   return {
-    restrict: 'A',
+    restrict: 'AE',
     scope: true,
     link: function (scope, elem, attrs) {
 
       $timeout(function () {
         $('#email-subject-line').focus();
+
+        // remove video btn
+        var btn = $('[name="insertVideo"]')[0];
+        btn.remove();
+
+        // reasign value of img
+        var imgBtn = $('[name="insertImage"]')[0];
+
+        $(imgBtn).bind('click', function (event) {
+          scope.imagesSelector = true;
+          scope.$digest();
+        })
       })
 
       scope.sendEmail = function (emailBody) {
