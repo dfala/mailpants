@@ -45,7 +45,14 @@
 				</p>
 			</div>
 			<div class="col-md-3">
-					<button class="btn btn-default btn-kameleon" ng-click="selectList(list)" ng-if="list.emailCount">Select list</button>
+					<button class="btn btn-success btn-kameleon" ng-click="selectList(list)" ng-if="list.emailCount">
+						<span class="glyphicon glyphicon-ok-circle"></span>
+					</button>
+
+					<button class="btn btn-default btn-kameleon" ng-if="list.emailCount" list="list" create-csv>
+						<span class="glyphicon glyphicon-cloud-download"></span>
+					</button>
+
 					<button class="btn btn-danger" ng-click="deleteList(list._id)">x</button>
 			</div>
 		</div>
