@@ -16,6 +16,8 @@ angular.module('mailPants')
         // reasign value of img
         var imgBtn = $('[name="insertImage"]')[0];
 
+        // TODO: Potential solution:
+        // http://stackoverflow.com/questions/15279244/dynamically-add-directives-on-angularjs#answer-19129131
         $(imgBtn).bind('click', function (event) {
           scope.imagesSelector = true;
           scope.$digest();
