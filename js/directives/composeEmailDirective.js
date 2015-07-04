@@ -1,6 +1,7 @@
 angular.module('mailPants')
 
-.directive('composeEmail', function ($http, emailService, $timeout, $window, dataStorage, $location) {
+.directive('composeEmail',
+function ($rootScope, $http, $compile, emailService, $timeout, dataStorage, $location) {
   return {
     restrict: 'AE',
     scope: true,
@@ -9,17 +10,18 @@ angular.module('mailPants')
       $timeout(function () {
         $('#email-subject-line').focus();
 
+        // reasign value of img
+        var imgBtn = $('[name="addImage"]')[0];
+
         // remove video btn
-        var btn = $('[name="insertVideo"]')[0];
+        var btn = $('[name="insertImage"]')[0];
         btn.remove();
 
-        // reasign value of img
-        var imgBtn = $('[name="insertImage"]')[0];
-
-        // TODO: Potential solution:
-        // http://stackoverflow.com/questions/15279244/dynamically-add-directives-on-angularjs#answer-19129131
+        // bind image action on addImage name btn defined on app.js taOptions
         $(imgBtn).bind('click', function (event) {
-          scope.imagesSelector = true;
+          if ($rootScope.imagesSelector === true)
+            scope.imagesSelector = true;
+        
           scope.$digest();
         })
       })

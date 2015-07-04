@@ -16,7 +16,6 @@ angular.module('mailPants')
 			// loading all images for user
 			scope.images = $rootScope.activeUser.images;
 
-
 			scope.addImage = function (imgUrl) {
 		        $('#compose-email-section').find("div[contenteditable='true']").each(function() {
 		        	var conteEditable = $(this);
@@ -25,6 +24,10 @@ angular.module('mailPants')
 					conteEditable.append(newImage);
 			       	
 			       	scope.closeImagesSelector();
+
+			       	// Necessary to trigger img resizing
+			       	$(this).blur();
+			       	$(this).focus();
 			    });
 			}
 		}
