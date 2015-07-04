@@ -27,7 +27,6 @@
 	padding: 32px;
 	display: flex;
 	flex-flow: row wrap;
-	/*justify-content: space-between;*/
 }
 	
 	.image-wrapper {
@@ -38,7 +37,6 @@
 		overflow: auto;
 		display: inline-block;
 		position: relative;
-		cursor: pointer;
 	}
 
 	.image-preview:hover {
@@ -48,13 +46,5 @@
 	.image-preview img {
 		border-radius: 2px;
 		max-width: 99%;
+		cursor: pointer;
 	}
-
-
-
-
-
-
-
-
-

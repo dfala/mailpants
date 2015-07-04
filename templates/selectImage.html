@@ -14,9 +14,9 @@
 			<input class="form-controll" type="file" fileread="uploadme" accept="image/*">
 		</div>
 
-		<div class="image-wrapper" ng-repeat="image in images" ng-click="addImage(image.Location)">
+		<div class="image-wrapper" ng-repeat="image in images">
 			<div class="image-preview">
-				<img ng-src="{{image.Location}}" />
+				<img ng-src="{{image.Location}}" ng-click="addImage(image.Location)"/>
 			</div>
 		</div>
 	</div>
