@@ -20,8 +20,10 @@ angular.module('mailPants')
 			scope.addImage = function (imgUrl) {
 		        $('#compose-email-section').find("div[contenteditable='true']").each(function() {
 		        	var conteEditable = $(this);
+		        	
 		        	var newImage = '<img src="' + imgUrl + '" style="max-width: 100%;"/>';
 			       	conteEditable.append(newImage);
+			       	
 			       	scope.closeImagesSelector();
 			    });
 			}

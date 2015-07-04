@@ -6,7 +6,7 @@
 	<div class="close-imgselector" ng-click="closeImagesSelector()">x</div>
 
 
-	<div class="template-container">
+	<div class="image-container">
 
 		<div class="pre-template">
 			<p>Upload an image:</p>
@@ -14,15 +14,15 @@
 			<input class="form-controll" type="file" fileread="uploadme" accept="image/*">
 		</div>
 
-		<div class="pre-template" ng-repeat="image in images" ng-click="addImage(image.Location)">
-			<div class="screenshot">
+		<div class="image-wrapper" ng-repeat="image in images" ng-click="addImage(image.Location)">
+			<div class="image-preview">
 				<img ng-src="{{image.Location}}" />
 			</div>
-			<div class="action-items">
+<!-- 			<div class="action-items">
 				<p>Name</p>
 				<button class="btn btn-default">Add image</button>
 				</div>
-			</div>
+			</div> -->
 
 		</div>
 	</div>

@@ -1,7 +1,6 @@
 .templates-section {
   display: flex;
   justify-content: center;
-  height: 100%;
   position: relative;
 }
 
@@ -14,18 +13,18 @@
 }
 
   .templates-section .pre-template {
-    width: 350px;
+    width: 23%;
     height: 250px;
     padding: 20px;
-    margin: 0 auto;
+    margin: 0 10px 20px 10px;
     border-radius: 2px;
     border: 1px solid #B0B0C3;
-    box-shadow: 0px 2px 10px -2px #B6B6BF;
+    /*box-shadow: 0px 2px 10px -2px #B6B6BF;*/
     background-color: #fff;
     overflow: auto;
     display: inline-block;
     position: relative;
-    cursor: pointer;
+    /*cursor: pointer;*/
   }
 
   .pre-template.blue-border {
@@ -70,11 +69,3 @@
   bottom: 0;
   /*background-color: #000;*/
 }
-
-
-
-
-
-  .test {
-
-  }

@@ -20,3 +20,41 @@
 	.close-imgselector:hover {
 		color: #000;
 	}
+
+.image-container {
+	width: 90%;
+	margin: 0;
+	padding: 32px;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+}
+	
+	.image-wrapper {
+		width: 23%;
+		height: 250px;
+		margin: 0 10px 20px 10px;
+		border-radius: 2px;
+		overflow: auto;
+		display: inline-block;
+		position: relative;
+		cursor: pointer;
+	}
+
+	.image-preview:hover {
+		box-shadow: 0px 0px 10px -2px #B6B6BF;
+	}
+
+	.image-preview img {
+		border-radius: 2px;
+		max-width: 99%;
+	}
+
+
+
+
+
+
+
+
+
