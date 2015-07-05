@@ -19,8 +19,10 @@ function ($rootScope, $http, $compile, emailService, $timeout, dataStorage, $loc
 
         // bind image action on addImage name btn defined on app.js taOptions
         $(imgBtn).bind('click', function (event) {
-          if ($rootScope.imagesSelector === true)
+          if ($rootScope.imagesSelector === true) {
             scope.imagesSelector = true;
+            $rootScope.imagesSelector = false;
+          }
         
           scope.$digest();
         })
