@@ -2,11 +2,12 @@
 	position: fixed;
 	width: 100%;
 	height: 100%;
-	background-color: #e4e4ec;
+	background-color: #3B3A43;
 	z-index: 999;
 	top: 0;
 
-	padding: 25px;
+	padding: 20px 50px;
+	overflow-y: scroll;
 }
 
 .close-imgselector {
@@ -14,7 +15,7 @@
 	right: 0;
 	font-size: 60px;
 	cursor: pointer;
-	color: #808080;
+	color: #fff;
 }
 
 	.close-imgselector:hover {
@@ -24,7 +25,7 @@
 .image-container {
 	width: 90%;
 	margin: 0;
-	padding: 32px;
+	padding: 80px;
 	display: flex;
 	flex-flow: row wrap;
 }
@@ -39,12 +40,22 @@
 		position: relative;
 	}
 
-	.image-preview:hover {
-		box-shadow: 0px 0px 10px -2px #B6B6BF;
-	}
-
 	.image-preview img {
 		border-radius: 2px;
 		max-width: 99%;
 		cursor: pointer;
+		opacity: 0.8;
 	}
+
+	.image-preview img:hover {
+		opacity: 1;
+	}
+
+
+
+
+
+
+
+
+
