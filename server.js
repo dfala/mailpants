@@ -4,6 +4,7 @@ var bodyParser = require('body-parser');
 var cors = require('cors');
 var mongoose = require('mongoose');
 
+
 // App definition
 var app = express();
 
@@ -18,10 +19,13 @@ app.use(cors());
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
+
+
 // Controllers
 var MainController = require('./controllers/mainController.js');
 var ListController = require('./controllers/listsController.js');
 var AmazonController = require('./controllers/AmazonController.js');
+var Stripe = require('./models/stripe.js');
 
 
 
@@ -51,6 +55,9 @@ app.get('/api/template', MainController.getTemplate);
 // Amazon S3
 app.get('/api/image/:imageKey', AmazonController.getImage);
 app.post('/api/newimage', AmazonController.postImage);
+
+// Stripe
+app.post('/api/payment', Stripe.makePayment);
 
 
 

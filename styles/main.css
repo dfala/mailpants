@@ -21,6 +21,10 @@ h1, h2, h3, h4, p {
 	font-family: 'Open Sans', sans-serif;
 }
 
+a:hover, a:focus, a:active, a:visited {
+	text-decoration: none;
+}
+
 
 /*ANGULAR STUFF*/
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {

@@ -45,24 +45,3 @@ exports.getUserInfo = function (req, res) {
 exports.createUser = function (req, res) {
 	UserInfo.createUser(req, res);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

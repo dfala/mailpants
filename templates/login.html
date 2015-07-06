@@ -3,6 +3,14 @@
 </header>
 
 <div class="login-section" auth-directive>
+
+	<div class="main-container">
+		<stripe-transact>
+			<button id="customButton">Purchase</button>
+		</stripe-transact>
+	</div>
+
+
 	<div class="main-container">
 		
 		<form ng-submit="loginUser(userEmail)">
