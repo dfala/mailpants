@@ -60,6 +60,10 @@
     bottom: 0;
   }
 
+  .pre-template input[type=file] {
+      max-width: 200px;
+  }
+
 
 .footer-process {
   position: fixed;

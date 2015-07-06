@@ -1,6 +1,7 @@
 <header-template></header-template>
 
 <span dashboard-directive>
+  <loading-wrap status="status"></loading-wrap>
 
 <div class="main-container clean-container">
 
@@ -71,6 +72,15 @@
     <p class="p-stats"> Opens: {{allUserData.stats.last_90_days.opens}} </p>
     <p class="p-stats"> Unsubscribes: {{allUserData.stats.last_90_days.unsubs}} </p>
   </div>
+</div>
+
+<div class="main-container space">
+
+  <stripe-transact>
+    <h3>Purchase</h3>
+    <button id="customButton" class="btn btn-default btn-kameleon">Purchase</button>
+  </stripe-transact>
+
 </div>
 
 </span>

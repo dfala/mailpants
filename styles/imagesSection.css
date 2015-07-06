@@ -25,7 +25,7 @@
 .image-container {
 	width: 90%;
 	margin: 0;
-	padding: 80px;
+	padding: 30px 0;
 	display: flex;
 	flex-flow: row wrap;
 }

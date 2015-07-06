@@ -1,8 +1,8 @@
 footer {
 	position: fixed;
 	bottom: 0;
-	background-color: #0E0E0E;
-	border-top: 1px solid #070707;
+	background-color: #fff;
+	/*border-top: 1px solid #070707;*/
 
 	display: flex;
 	justify-content: space-between;

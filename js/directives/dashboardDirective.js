@@ -6,6 +6,8 @@ angular.module('mailPants')
     scope: true,
     link: function (scope, elem, attrs) {
 
+      scope.status = true;
+
       //TODO: change this once we can login users:
       var userEmail = $rootScope.userEmail;
       scope.displayAll = true;
@@ -23,6 +25,7 @@ angular.module('mailPants')
           dashboardService.getUserData(userEmail)
           .then(function (response) {
             scope.allUserData = response;
+            scope.status = false;
           })
           .catch(function (err) {
             throw new Error(err);
