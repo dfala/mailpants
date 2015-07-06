@@ -30,6 +30,26 @@ angular.module('mailPants')
 			       	$(this).focus();
 			    });
 			}
+
+			scope.removeImage = function (image) {
+				var params = {
+					image: image,
+					userId: $rootScope.activeUser._id
+				}
+
+				scope.images = scope.images.filter(function (img) {
+					if (img.Location === image.Location) return false;
+					return true;
+				})
+
+				imagesService.deleteImage(params)
+				.then(function (response) {
+					console.info('Img removed');
+				})
+				.catch(function (err) {
+					throw new Error(err);
+				});
+			}
 		}
 	}
 })

@@ -54,6 +54,7 @@ app.get('/api/template', MainController.getTemplate);
 
 // Amazon S3
 app.get('/api/image/:imageKey', AmazonController.getImage);
+app.put('/api/image', AmazonController.deleteImage);
 app.post('/api/newimage', AmazonController.postImage);
 
 // Stripe

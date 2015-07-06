@@ -20,7 +20,7 @@ angular.module('mailPants')
 
                         imagesService.storeImage(fileread, fileName)
                         .then(function (result) {
-                            scope.images.push(result);
+                            scope.images.unshift(result);
                         })
                         .catch(function (err) {
                             throw new Error(err);

@@ -40,6 +40,10 @@
 		position: relative;
 	}
 
+	.image-preview {
+		position: relative;
+	}
+
 	.image-preview img {
 		border-radius: 2px;
 		max-width: 99%;
@@ -51,7 +55,36 @@
 		opacity: 1;
 	}
 
+.delete-image {
+	position: absolute;
+	text-align: center;
+	top: 0;
+	right: 3px;
+	width: 25px;
+	height: 25px;
+	background-color: transparent;
+	z-index: 9;
+	cursor: pointer;
 
+	display: flex;
+	justify-content: center;
+}
+
+	.delete-image:hover {
+		background-color: rgb(221, 52, 52);
+	}
+
+	.delete-image:hover p {
+		color: #F2F2F2;
+	}
+
+	.delete-image p {
+		font-size: 20px;
+		margin: 0;
+		margin-top: -3px;
+		padding: 0;
+		color: rgba(255, 255, 255, 0.35);
+	}
 
 
 

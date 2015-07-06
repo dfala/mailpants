@@ -12,3 +12,7 @@ exports.postImage = function (req, res) {
 	Amazon.saveImage(req, res);
 }
 
+exports.deleteImage = function (req, res) {
+	Amazon.deleteImage(req, res);
+}
+

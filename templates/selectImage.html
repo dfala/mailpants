@@ -16,6 +16,9 @@
 
 		<div class="image-wrapper" ng-repeat="image in images">
 			<div class="image-preview">
+				<div class="delete-image" ng-click="removeImage(image); $event.stopPropagation()">
+					<p>x</p>
+				</div>
 				<img ng-src="{{image.Location}}" ng-click="addImage(image.Location)"/>
 			</div>
 		</div>

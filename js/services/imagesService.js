@@ -28,6 +28,22 @@ angular.module('mailPants')
 		return deferred.promise;
 	}
 
+
+	service.deleteImage = function (image) {
+		var deferred = $q.defer();
+
+		$http.put('/api/image', image)
+		.success(function (response) {
+			deferred.resolve(response);
+		})
+		.error(function (err) {
+			deferred.reject(err);
+		});
+
+		return deferred.promise;
+	}
+
+
 	service.getImage = function (imageName) {
 		var deferred = $q.defer();
 
