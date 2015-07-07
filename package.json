@@ -25,6 +25,9 @@
     "mandrill-api": "^1.0.45",
     "mongoose": "^4.0.6",
     "stripe": "^3.5.2",
-    "textangular": "^1.4.1"
+    "textangular": "^1.4.1",
+    "passport" : "~0.1.17",         
+    "passport-local" : "~0.1.6",
+    "bcrypt-nodejs" : "latest"
   }
 }

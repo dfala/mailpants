@@ -23,6 +23,7 @@ function (listService, dataStorage, $location, $rootScope, $timeout) {
 
 
 			scope.newEmails = function (newList) {
+				// return console.log(newList);
 				newList.userEmail = userEmail;
 
 				listService.saveList(newList)

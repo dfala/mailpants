@@ -25,12 +25,20 @@ angular.module('mailPants')
 
 		// clean list object
 		newList.addedEmails = newList.addedEmails.replace(/ /g,'');
-		var emailArray = newList.addedEmails.split(',');
+		var encoded = escape(newList.addedEmails);
 
-		if(!emailArray[emailArray.length - 1]) emailArray.pop();
+		if (encoded.indexOf('%0A') > 0) {
+			// sanitizing csv copy paste
+			newList.addedEmails = encoded.split('%0A');
+		} else if (newList.addedEmails.indexOf(',') > 0) {
+			// sanitizing comma-separated emails
+			newList.addedEmails = newList.addedEmails.split(',');
+		}
 
-		newList.emails = emailArray;
-		newList.emailCount = emailArray.length;
+		if(!newList.addedEmails[newList.addedEmails.length - 1]) newList.addedEmails.pop();
+
+		newList.emails = newList.addedEmails;
+		newList.emailCount = newList.addedEmails.length;
 		delete newList['addedEmails'];
 
 		$http.post('/api/emailList', newList)
