@@ -15,7 +15,7 @@ function ($http, $q, dataStorage, $rootScope, emailWrapper) {
 		}
 
 		//TODO: refactor once user logs in
-		email.from_email = $rootScope.userEmail;
+		email.from_email = $rootScope.userInfo.email;
 		
 		var emailList = dataStorage.serveList().emails;
 		var toField = [];

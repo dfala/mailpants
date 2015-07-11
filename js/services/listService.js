@@ -20,6 +20,22 @@ angular.module('mailPants')
 	}
 
 
+	service.getList = function (listId) {
+		var deferred = $q.defer();
+
+		var uri = '/api/list/' + listId;
+		$http.get(uri)
+		.success(function (response) {
+			deferred.resolve(response);
+		})
+		.error(function (err) {
+			deferred.reject(err);
+		});
+
+		return deferred.promise;
+	}
+
+
 	service.saveList = function (newList) {
 		var deferred = $q.defer();
 

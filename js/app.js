@@ -40,6 +40,17 @@ angular.module('mailPants', ['textAngular', 'ngRoute'])
 		}
 	})
 
+	.when('/list/:listId', {
+		templateUrl: '/templates/activeList.html',
+		controller: 'listController',
+		resolve: {
+			userData: checkUser,
+			activeList: function ($route) {
+				return $route.current.params.listId;
+			}
+		}
+	})
+
 	.when('/templates', {
 		templateUrl: '/templates/emailTemplates.html',
 		resolve: {

@@ -66,6 +66,7 @@ app.post('/api/email', MainController.send);
 
 // List management
 app.get('/api/emailLists/:userEmail', ListController.getLists);
+app.get('/api/list/:listId', ListController.getList);
 app.post('/api/emailList', ListController.saveList);
 app.put('/api/unsubscribe', ListController.unsubscribe);
 app.delete('/api/list/:listId', ListController.deleteList);

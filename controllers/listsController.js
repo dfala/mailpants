@@ -4,6 +4,7 @@ var exports = module.exports = {};
 var Mandrill = require('../models/mandrill.js');
 var EmailList = require('../models/emailList.js');
 var User = require('../models/User.js');
+var List = require('../models/emailList.js');
 
 
 // Heavy lifting
@@ -34,6 +35,15 @@ exports.getLists = function (req, res) {
 		return res.json(result);
 	})
 }
+
+exports.getList = function (req, res) {
+	var listId = req.params.listId;
+	List.findById(listId, function (err, list) {
+		if (err) return res.status(500).send(err);
+		return res.json(list);
+	});
+}
+
 
 exports.deleteList = function (req, res) {
 	var listId = req.params.listId;

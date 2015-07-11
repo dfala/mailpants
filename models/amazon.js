@@ -61,8 +61,6 @@ exports.deleteImage = function (req, res) {
 	  User.findById(req.body.userId, function (err, user) {
 	  	if (err) return res.status(500).send(err);
 
-	  	// console.log(user);
-
 	  	user.images = user.images.filter(function (image, index) {
 	  		if (image.Location === req.body.image.Location) return false;
 	  		return true;
@@ -91,8 +89,6 @@ exports.saveImage = function (req, res) {
 
     s3.upload(params, function (err, data) {
       if (err) return res.status(500).send(err);
-      
-      console.log(req.body.userEmail);
 
       // Add list link to user.images
       var query  = User.where({ email: req.body.userEmail });

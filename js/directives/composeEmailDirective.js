@@ -29,6 +29,7 @@ function ($rootScope, $http, $compile, emailService, $timeout, dataStorage, $loc
       })
 
       scope.sendEmail = function (emailBody) {
+        if (!emailBody.html) emailBody.html = '';
         emailBody.html = emailBody.html.replace(/<img/g, '<img style="max-width: 100% !important"');
 
         if (!emailBody) alert('Come on man... add something!');
