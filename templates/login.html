@@ -6,11 +6,11 @@
 
 	<div class="wrapper">
 
-		<div class="main-container green-border">
+		<div class="main-container">
 
 			<form ng-submit="signUpUser(newUser)">
 				<h4>Create account</h4>
-				<input placeholder="email" type="email" class="form-control" ng-model="newUser.email" id="email-input">
+				<input placeholder="email" type="email" class="form-control" ng-model="newUser.email" id="signup-email">
 				<br>
 				<input placeholder="password" type="password" class="form-control" ng-model="newUser.password">
 				<button class="btn btn-default btn-kameleon">Sign Up</button>
@@ -26,7 +26,7 @@
 			
 			<form ng-submit="loginUser(user)">
 				<h4>Login back in</h4>
-				<input placeholder="email" type="email" class="form-control" ng-model="user.email">
+				<input placeholder="email" type="email" class="form-control" ng-model="user.email" id="login-email">
 				<br>
 				<input placeholder="password" type="password" class="form-control" ng-model="user.password">
 				<button class="btn btn-default btn-kameleon">Login</button>

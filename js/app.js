@@ -33,6 +33,10 @@ angular.module('mailPants', ['textAngular', 'ngRoute'])
 		templateUrl: '/templates/login.html'
 	})
 
+	.when('/sign-up', {
+		templateUrl: '/templates/login.html'
+	})
+
 	.when('/email-list', {
 		templateUrl: '/templates/emailList.html',
 		resolve: {

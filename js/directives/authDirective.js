@@ -7,7 +7,12 @@ angular.module('mailPants')
 		link: function (scope, elem, attrs) {
 
 			$timeout(function () {
-				$('#email-input').focus();
+				console.log($location.$$url);
+				if ($location.$$url === '/login') {
+					$('#login-email').focus();
+				} else {
+					$('#signup-email').focus();
+				}
 			})
 
 			scope.loginUser = function (user) {
