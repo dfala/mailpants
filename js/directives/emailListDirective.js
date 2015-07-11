@@ -1,14 +1,13 @@
 angular.module('mailPants')
 
 .directive('emailList',
-function (listService, dataStorage, $location, $rootScope, $timeout) {
+function ($rootScope, $location, $timeout, listService, dataStorage) {
 	return {
 		restrict: 'A',
 		scope: true,
 		link: function (scope, elem, attrs) {
 
-			// TODO: change this once user authentication
-			var userEmail = $rootScope.userEmail;
+			var userEmail = $rootScope.userInfo.email;
 
 			var getLists = function () {
 				listService.getLists(userEmail)

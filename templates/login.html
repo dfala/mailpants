@@ -7,18 +7,22 @@
 
 	<div class="main-container">
 		
-		<form ng-submit="loginUser(userEmail)">
+		<form ng-submit="loginUser(user)">
 			<h4>Login</h4>
-			<input placeholder="email" class="form-control" ng-model="userEmail">
-			<button class="btn btn-default btn-kameleon">Get me in</button>
+			<input placeholder="email" type="email" class="form-control" ng-model="user.email">
+			<br>
+			<input placeholder="password" type="password" class="form-control" ng-model="user.password">
+			<button class="btn btn-default btn-kameleon">Login</button>
 		</form>
 
 		<br><hr><br>
 
 		<form ng-submit="signUpUser(newUser)">
 			<h4>Sign Up</h4>
-			<input placeholder="email" class="form-control" ng-model="newUser.email">
-			<button class="btn btn-default btn-kameleon">Get me in</button>
+			<input placeholder="email" type="email" class="form-control" ng-model="newUser.email">
+			<br>
+			<input placeholder="password" type="password" class="form-control" ng-model="newUser.password">
+			<button class="btn btn-default btn-kameleon">Sign Up</button>
 		</form>
 
 	</div>

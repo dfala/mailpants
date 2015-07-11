@@ -19,31 +19,3 @@ exports.getMandrillInfo = function (userEmail, error, success) {
       return error(e);
   });
 }
-
-exports.getUserInfo = function (req, res) {
-	var query  = User.where({ "email": req.params.userEmail });
-	query.findOne(function (err, result) {
-		if (err === null && result === null) return res.json({"noUser": true});
-		if (err) return res.status(500).send(err);
-		return res.json(result);
-	})
-}
-
-exports.createUser = function (req, res) {
-	User.find({email: req.body.email}, function (err, result) {
-		console.log(result);
-		if (!result.length) {
-			var newUser = new User(req.body);
-			newUser.save(function (err, result) {
-				if (err) return res.status(500).send(err);
-
-				// Create amazon folder for user
-				//Amazon.createFolder(req, res, result);
-
-				return res.json(result);
-			});
-		} else {
-			res.json({"userExists": true});
-		}
-	})
-}

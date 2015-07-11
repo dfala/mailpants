@@ -37,9 +37,16 @@ angular.module('mailPants')
 
 		if(!newList.addedEmails[newList.addedEmails.length - 1]) newList.addedEmails.pop();
 
+		if (typeof newList.addedEmails === 'string') {
+			newList.emailCount = 1;
+		} else {
+			newList.emailCount = newList.addedEmails.length;	
+		}
+
 		newList.emails = newList.addedEmails;
-		newList.emailCount = newList.addedEmails.length;
+		
 		delete newList['addedEmails'];
+
 
 		$http.post('/api/emailList', newList)
 		.success(function (response) {

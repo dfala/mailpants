@@ -8,8 +8,7 @@ angular.module('mailPants')
 
       scope.status = true;
 
-      //TODO: change this once we can login users:
-      var userEmail = $rootScope.userEmail;
+      var userEmail = $rootScope.userInfo.email;
       scope.displayAll = true;
 
       // Check for email sucess message

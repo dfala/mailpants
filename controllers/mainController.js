@@ -38,10 +38,3 @@ exports.userMandrillInfo = function (req, res) {
 	UserInfo.getMandrillInfo(userEmail, error, success);
 }
 
-exports.getUserInfo = function (req, res) {
-	UserInfo.getUserInfo(req, res);
-}
-
-exports.createUser = function (req, res) {
-	UserInfo.createUser(req, res);
-}

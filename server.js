@@ -3,22 +3,44 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var cors = require('cors');
 var mongoose = require('mongoose');
+var keys = require('./models/keys.js');
+
+
+// Auth required
+var morgan        = require('morgan');
+var flash 		  = require('connect-flash');
+var passport 	  = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+var cookieParser  = require('cookie-parser');
+var session 	  = require('express-session');
 
 
 // App definition
 var app = express();
 
+
 // Serving app
 app.use(express.static(__dirname + '/'));
 
+
 // Middleware
 app.use(cors());
-// app.use(bodyParser());
+
+app.use(cookieParser());
+app.use(session({ 
+	secret: keys.secret,
+    resave: true,
+    saveUninitialized: true
+ })); // session secret
+app.use(passport.initialize());
+app.use(passport.session({})); // persistent login sessions
+app.use(flash());
+require('./models/passport.js')(passport);
+
 
 // Expanding server capacity
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
-
 
 
 // Controllers
@@ -27,15 +49,17 @@ var ListController = require('./controllers/listsController.js');
 var AmazonController = require('./controllers/AmazonController.js');
 var Stripe = require('./models/stripe.js');
 
-
+//RequireAuth
+var requireAuth = function(req, res, next) {
+   if (!req.isAuthenticated()) {
+       return res.status(403).send({message: "Logged In"   }).end();
+   }
+   return next();
+}
 
 ////////////////////////////////////
 //////////// REST API //////////////
 ////////////////////////////////////
-
-// Users
-app.get('/api/user/:userEmail', MainController.getUserInfo);
-app.post('/api/user', MainController.createUser);
 
 // Emails
 app.post('/api/email', MainController.send);
@@ -60,6 +84,26 @@ app.post('/api/newimage', AmazonController.postImage);
 // Stripe
 app.post('/api/payment', Stripe.makePayment);
 
+// Authentication
+app.post('/api/login', passport.authenticate('local-login', {
+	//not working
+	successRedirect: '/#/email-lists',
+	failureRedirect: '/#/login',
+	failureFlash : true
+}));
+
+app.post('/api/signup', passport.authenticate('local-signup', {
+	//not working
+	successRedirect: '/#/email-lists',
+	failureRedirect: '/#/login',
+	failureFlash : true
+}));
+
+app.get('/api/user', function(req, res){
+	if (req.isAuthenticated()) return res.json(req.user);
+	return res.status(403).end();
+});
+
 
 
 ////////////////////////////////////
@@ -82,3 +126,12 @@ var portNum = 3000;
 app.listen(portNum, function () {
     console.log('Making some pancakes on port:', portNum);
 })
+
+
+
+
+
+
+
+
+

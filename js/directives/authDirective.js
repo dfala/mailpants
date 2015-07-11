@@ -1,20 +1,18 @@
 angular.module('mailPants')
 
-.directive('authDirective', function ($rootScope, $location, userService) {
+.directive('authDirective', function ($rootScope, userService, $location) {
 	return {
 		restrict: 'A',
 		scope: true,
 		link: function (scope, elem, attrs) {
 
-			scope.userEmail = "yofala@gmail.com";
-
-			scope.loginUser = function (userEmail) {
-				userService.getUser(userEmail)
+			scope.loginUser = function (user) {
+				userService.loginUser(user)
 				.then(function (response) {
-					if (response.noUser) return alert('No user found');
+					// $rootScope.activeUser = response;
+					// $rootScope.userEmail = response.email;
 
-					$rootScope.activeUser = response;
-					$rootScope.userEmail = response.email;
+					// hack to successRedirect on server not working
 					$location.path('/email-list');
 				})
 				.catch(function (err) {
@@ -25,9 +23,10 @@ angular.module('mailPants')
 			scope.signUpUser = function (newUser) {
 				userService.signUpUser(newUser)
 				.then(function (response) {
-					if (response.userExists) return alert('Email already exists');
-					
-					$rootScope.userEmail = response.email;
+					// if (response.userExists) return alert('Email already exists');
+					// $rootScope.userEmail = response.email;
+
+					// hack to successRedirect on server not working
 					$location.path('/email-list');
 				})
 				.catch(function (err) {

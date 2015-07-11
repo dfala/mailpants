@@ -1,5 +1,98 @@
 angular.module('mailPants', ['textAngular', 'ngRoute'])
 
+.config(function ($routeProvider) {
+
+	// check for logged in user
+	var checkUser = function ($rootScope, $location, userService, $q) {
+		var deferred = $q.defer();
+
+		userService.getUserData()
+		.then(function (response) {
+			$rootScope.userInfo = response;
+			deferred.resolve(response);
+		})
+		.catch(function (err) {
+			$location.path('/login');
+			deferred.reject(err);
+		});
+
+		return deferred.promise;
+	}
+
+
+	////////////////////////////////////
+	////////////// ROUTES //////////////
+	////////////////////////////////////
+
+	$routeProvider
+	.when('/', {
+		templateUrl: '/templates/home.html'
+	})
+
+	.when('/login', {
+		templateUrl: '/templates/login.html'
+	})
+
+	.when('/email-list', {
+		templateUrl: '/templates/emailList.html',
+		resolve: {
+			userData: checkUser
+		}
+	})
+
+	.when('/templates', {
+		templateUrl: '/templates/emailTemplates.html',
+		resolve: {
+			userData: checkUser
+		}
+	})
+
+	.when('/compose-email', {
+		templateUrl: '/templates/composeEmail.html',
+		resolve: {
+			userData: checkUser
+		}
+	})
+
+	.when('/dashboard', {
+		templateUrl: '/templates/dashboard.html',
+		resolve: {
+			userData: checkUser
+		}
+	})
+
+	.when('/template', {
+		templateUrl: '/templates/emailTemplate.html',
+		resolve: {
+			userData: checkUser
+		}
+	})
+
+	.when('/unsubscribe/:listId/:unsubEmail', {
+		templateUrl: '/templates/unsubscribe.html',
+		controller: 'unsubscribeController',
+		resolve: {
+			listId: function ($route) {
+				return $route.current.params.listId;
+			},
+			unsubEmail: function ($route) {
+				return $route.current.params.unsubEmail;
+			}
+		}
+	})
+
+	.otherwise('/');
+})
+
+
+
+
+
+
+////////////////////////////////////
+///////////// WYSIWYG //////////////
+////////////////////////////////////
+
 .config(['$provide', function($provide){
 	// this demonstrates how to register a new tool and add it to the default toolbar
 	$provide.decorator('taOptions', ['taRegisterTool', '$delegate', '$rootScope', function (taRegisterTool, taOptions, $rootScope) {
@@ -35,74 +128,4 @@ angular.module('mailPants', ['textAngular', 'ngRoute'])
 
 	    return taOptions; // whatever you return will be the taOptions
 	}]);
-}])
-
-.config(function ($routeProvider) {
-	$routeProvider
-	.when('/', {
-		templateUrl: '/templates/home.html'
-	})
-
-	.when('/login', {
-		templateUrl: '/templates/login.html'
-	})
-
-	.when('/email-list', {
-		templateUrl: '/templates/emailList.html',
-		resolve: {
-			emailUser: function ($rootScope, $location) {
-				if (!$rootScope.userEmail) return $location.path('/login');
-				return $rootScope.userEmail;
-			}
-		}
-	})
-
-	.when('/templates', {
-		templateUrl: '/templates/emailTemplates.html'
-		// resolve: {
-		// 	emailUser: function ($rootScope, $location) {
-		// 		if (!$rootScope.userEmail) return $location.path('/login');
-		// 		return $rootScope.userEmail;
-		// 	}
-		// }
-	})
-
-	.when('/compose-email', {
-		templateUrl: '/templates/composeEmail.html',
-		resolve: {
-			emailUser: function ($rootScope, $location) {
-				if (!$rootScope.userEmail) return $location.path('/login');
-				return $rootScope.userEmail;
-			}
-		}
-	})
-
-	.when('/dashboard', {
-		templateUrl: '/templates/dashboard.html',
-		resolve: {
-			emailUser: function ($rootScope, $location) {
-				if (!$rootScope.userEmail) return $location.path('/login');
-				return $rootScope.userEmail;
-			}
-		}
-	})
-
-	.when('/template', {
-		templateUrl: '/templates/emailTemplate.html'
-	})
-
-	.when('/unsubscribe/:listId/:unsubEmail', {
-		templateUrl: '/templates/unsubscribe.html',
-		controller: 'unsubscribeController',
-		resolve: {
-			listId: function ($route) {
-				return $route.current.params.listId;
-			},
-			unsubEmail: function ($route) {
-				return $route.current.params.unsubEmail;
-			}
-		}
-	})
-
-	.otherwise('/');
-});
+}]);
