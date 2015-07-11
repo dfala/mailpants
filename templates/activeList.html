@@ -3,7 +3,20 @@
 <div class="al-section">
 
 	<div class="main-container">
-		hi guys
+		<h3>{{activeList.listName}}</h3>
+		<hr>
+		
+		<h4>Active Emails:</h4>
+		<p ng-repeat="email in activeList.emails">
+			{{email}}
+		</p>
+
+		<span ng-if="activeList.unsubs.length > 0">
+			<h4>Unsubscribed emails</h4>
+			<p ng-repeat="unsub in activeList.unsubs">
+				{{unsub}}
+			</p>
+		</span>
 	</div>
 
 </div>

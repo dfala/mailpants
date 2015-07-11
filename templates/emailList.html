@@ -37,9 +37,9 @@
 
 		<div class="listed-lists row" ng-repeat="list in lists">
 			<div class="col-md-6">
-				<p>
+				<a ng-href="#/list/{{list._id}}"><p>
 					{{list.listName}}
-				</p>
+				</p></a>
 			</div>
 			<div class="col-md-3">
 				<p>

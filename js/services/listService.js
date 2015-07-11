@@ -10,6 +10,7 @@ angular.module('mailPants')
 
 		$http.get(uri)
 		.success(function (response) {
+			console.log(response);
 			deferred.resolve(response);
 		})
 		.error(function (err) {

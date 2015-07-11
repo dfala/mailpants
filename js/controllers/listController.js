@@ -7,6 +7,7 @@ function ($scope, activeList, listService) {
 
 	listService.getList(activeList)
 	.then(function (response) {
+		$scope.activeList = response;
 		console.log(response);
 	})
 	.catch(function (err) {
