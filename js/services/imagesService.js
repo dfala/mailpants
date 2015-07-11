@@ -14,7 +14,7 @@ angular.module('mailPants')
 			imageName: fileName,
 			imageBody: imageData,
 			imageExtension: imageExtension,
-			userEmail: $rootScope.userEmail
+			userEmail: $rootScope.userInfo.email
 		}
 
 		$http.post('/api/newimage', newImage)

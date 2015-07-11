@@ -109,6 +109,10 @@ a:hover, a:focus, a:active, a:visited {
 	cursor: pointer;
 }
 
+.green-border {
+	border: 1px solid #2ecc71;
+}
+
 
 
 

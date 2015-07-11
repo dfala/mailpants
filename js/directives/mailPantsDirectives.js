@@ -8,7 +8,7 @@ angular.module('mailPants')
 		link: function (scope, elem, attrs) {
 			// TODO: refactor once user auth
 			scope.logout = function () {
-				$rootScope.userEmail = undefined;
+				$rootScope.userInfo = undefined;
 				$location.path('/#/');
 			}
 		}
@@ -27,4 +27,10 @@ angular.module('mailPants')
 			})
 		}
 	}
-});
+})
+
+.directive('footerTemplate', function () {
+	return {
+		templateUrl: '/templates/footer.html'
+	}
+})

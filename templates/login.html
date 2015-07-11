@@ -4,28 +4,41 @@
 
 <div class="login-section" auth-directive>
 
+	<div class="wrapper">
 
-	<div class="main-container">
-		
-		<form ng-submit="loginUser(user)">
-			<h4>Login</h4>
-			<input placeholder="email" type="email" class="form-control" ng-model="user.email">
-			<br>
-			<input placeholder="password" type="password" class="form-control" ng-model="user.password">
-			<button class="btn btn-default btn-kameleon">Login</button>
-		</form>
+		<div class="main-container green-border">
 
-		<br><hr><br>
+			<form ng-submit="signUpUser(newUser)">
+				<h4>Create account</h4>
+				<input placeholder="email" type="email" class="form-control" ng-model="newUser.email" id="email-input">
+				<br>
+				<input placeholder="password" type="password" class="form-control" ng-model="newUser.password">
+				<button class="btn btn-default btn-kameleon">Sign Up</button>
+			</form>
 
-		<form ng-submit="signUpUser(newUser)">
-			<h4>Sign Up</h4>
-			<input placeholder="email" type="email" class="form-control" ng-model="newUser.email">
-			<br>
-			<input placeholder="password" type="password" class="form-control" ng-model="newUser.password">
-			<button class="btn btn-default btn-kameleon">Sign Up</button>
-		</form>
+		</div>
+
+
+		<div class="right-divider"></div>
+
+
+		<div class="main-container">
+			
+			<form ng-submit="loginUser(user)">
+				<h4>Login back in</h4>
+				<input placeholder="email" type="email" class="form-control" ng-model="user.email">
+				<br>
+				<input placeholder="password" type="password" class="form-control" ng-model="user.password">
+				<button class="btn btn-default btn-kameleon">Login</button>
+			</form>
+
+		</div>
+
+
 
 	</div>
 
 </div>
+
+<footer-template></footer-template>
 

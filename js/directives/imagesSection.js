@@ -14,7 +14,7 @@ angular.module('mailPants')
 			}
 
 			// loading all images for user
-			scope.images = $rootScope.activeUser.images;
+			scope.images = $rootScope.userInfo.images;
 
 			scope.addImage = function (imgUrl) {
 		        $('#compose-email-section').find("div[contenteditable='true']").each(function() {
@@ -34,7 +34,7 @@ angular.module('mailPants')
 			scope.removeImage = function (image) {
 				var params = {
 					image: image,
-					userId: $rootScope.activeUser._id
+					userId: $rootScope.userInfo._id
 				}
 
 				scope.images = scope.images.filter(function (img) {

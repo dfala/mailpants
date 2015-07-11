@@ -92,10 +92,13 @@ exports.saveImage = function (req, res) {
     s3.upload(params, function (err, data) {
       if (err) return res.status(500).send(err);
       
+      console.log(req.body.userEmail);
+
       // Add list link to user.images
       var query  = User.where({ email: req.body.userEmail });
 	  query.findOne(function (err, activeUser) {
       	if (err) return console.log(err);
+
       	data.imgPath = bucketName;
 
       	activeUser.images.push(data);
