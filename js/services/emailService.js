@@ -18,6 +18,8 @@ function ($http, $q, dataStorage, $rootScope, emailWrapper) {
 		email.from_email = $rootScope.userInfo.email;
 		
 		var emailList = dataStorage.serveList().emails;
+		if (!emailList) return alert('Please choose a list!');
+
 		var toField = [];
 
 		emailList.forEach(function (email) {
