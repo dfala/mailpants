@@ -1,6 +1,6 @@
 angular.module('mailPants')
 
-.directive('authDirective', function ($rootScope, $location, $timeout, userService) {
+.directive('authDirective', function ($rootScope, $location, $timeout, userService, $http) {
 	return {
 		restrict: 'A',
 		scope: true,
@@ -34,6 +34,21 @@ angular.module('mailPants')
 					$location.path('/email-list');
 				})
 				.catch(function (err) {
+					throw new Error(err);
+				});
+			}
+
+			// Forgot password
+			scope.openForgot = function () {
+				var email = prompt('What\'s your email?');
+				if (!email) return;
+
+				var uri = '/api/get-forgot-user/' + email;
+				$http.get(uri)
+				.success(function (response) {
+					userService.forgotPassword(response);
+				})
+				.error(function (err) {
 					throw new Error(err);
 				});
 			}

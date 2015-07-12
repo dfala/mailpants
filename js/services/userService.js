@@ -1,7 +1,25 @@
 angular.module('mailPants')
 
-.factory('userService', function ($http, $q, $location) {
+.factory('userService', function ($http, $q, $location, emailWrapper) {
 	var service = {};
+
+
+	service.forgotPassword = function (userInfo) {
+		var data = {
+			html: emailWrapper.forgotPassword(userInfo),
+			subject: 'Reset your MailPants password',
+			to: [{ email: userInfo.email, type: 'to' }],
+			from_email: 'yofala@gmail.com'
+		}
+
+		$http.post('/api/forgot-password', data)
+		.success(function (response) {
+			console.log(response);
+		})
+		.error(function (err) {
+			throw new Error(err);
+		})
+	}
 
 
 	service.loginUser = function (user) {

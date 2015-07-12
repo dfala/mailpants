@@ -96,6 +96,19 @@ angular.module('mailPants', ['textAngular', 'ngRoute'])
 		}
 	})
 
+	.when('/reset/:password/:email', {
+		templateUrl: '/templates/resetPassword.html',
+		controller: 'resetPasswordController',
+		resolve: {
+			resetPassword: function ($route) {
+				return $route.current.params.password;
+			},
+			resetEmail: function ($route) {
+				return $route.current.params.email;
+			}
+		}
+	})
+
 	.otherwise('/');
 })
 

@@ -17,9 +17,6 @@ exports.sendEmail = function (body, err, success) {
         'Reply-To': body.from_email
     }
 
-
-    console.log(message);
-
     mandrill_client.messages.send({"message": message, "async": async, "ip_pool": ip_pool}, function(result) {
         console.log(result);
         success(result)
