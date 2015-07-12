@@ -26,6 +26,8 @@ angular.module('mailPants')
 			}
 
 			scope.signUpUser = function (newUser) {
+				if(newUser.password !== newUser.repeatPassword) return alert('Your passwords don\'t match :(');
+
 				userService.signUpUser(newUser)
 				.then(function (response) {
 					// hack to successRedirect on server not working

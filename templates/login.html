@@ -11,8 +11,10 @@
 			<form ng-submit="signUpUser(newUser)">
 				<h4>Create account</h4>
 				<input placeholder="email" type="email" class="form-control" ng-model="newUser.email" id="signup-email">
-				<br>
+				<hr>
 				<input placeholder="password" type="password" class="form-control" ng-model="newUser.password">
+				<br>
+				<input placeholder="repeat password" type="password" class="form-control" ng-model="newUser.repeatPassword">
 				<button class="btn btn-default btn-kameleon">Sign Up</button>
 			</form>
 
@@ -30,6 +32,9 @@
 				<br>
 				<input placeholder="password" type="password" class="form-control" ng-model="user.password">
 				<button class="btn btn-default btn-kameleon">Login</button>
+				<a href="">
+					<p class="forgot-p">forgot password?</p>
+				</a>
 			</form>
 
 		</div>

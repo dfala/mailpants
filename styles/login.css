@@ -29,3 +29,13 @@
 		position: absolute;
 		top: 25%;
 	}
+
+	.login-section .forgot-p {
+		position: absolute;
+		right: 0;
+		bottom: 6px;
+	}
+
+	.login-section form {
+		position: relative;
+	}
