@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="styles/activeList.css">
+
 <header-template></header-template>
 
 <div class="al-section">
@@ -7,18 +8,35 @@
 		<h3>{{activeList.listName}}</h3>
 		<hr>
 
-		<button ng-click="deleteEmails()" class="btn btn-default btn-kameleon">Delete Emails</button>
+		<div class="action-wrapper">
+			<div class="soft-actions">
+
+				<button ng-click="unsubscribeEmails()" class="btn btn-default btn-kameleon">Unsubscribe Emails</button>
+
+				<button ng-click="deleteEmails()" class="btn btn-default btn-kameleon">Delete Emails</button>
+
+			</div>
+
+			<div class="hard-actions">
+
+				<button class="btn btn-default btn-kameleon" list="activeList" create-csv>Download as CSV</button>
+				
+				<button ng-click="deleteList(activeList._id)" class="btn btn-default btn-kameleon">Delete List</button>
+
+			</div>
+		</div>
 
 		<hr>
 		
 		<h4>Active Emails:</h4>
 		<p ng-repeat="email in activeList.emails">
-			<input type="checkbox" class="check-box" ng-click="addEmail(email)">
+			<input type="checkbox" class="check-box" ng-click="addEmailToArray(email)">
 			<label>{{email}}</label>
 		</p>
 
 		<span ng-if="activeList.unsubs.length > 0">
-			<h4>Unsubscribed emails</h4>
+			<hr>
+			<h4>Unsubscribed Emails:</h4>
 			<p ng-repeat="unsub in activeList.unsubs">
 				{{unsub}}
 			</p>

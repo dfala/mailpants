@@ -40,20 +40,6 @@ function ($rootScope, $location, $timeout, listService, dataStorage) {
 				$location.path('/compose-email');
 			}
 
-
-			scope.deleteList = function (id) {
-				listService.deleteList(id)
-				.then(function (response) {
-					scope.lists = scope.lists.filter(function (list, index) {
-						if (list._id === response._id) return false;
-						return true;
-					})
-				})
-				.catch(function (err) {
-					throw new Error(err);
-				});
-			}
-
 		}
 	}
 })

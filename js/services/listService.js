@@ -92,7 +92,7 @@ angular.module('mailPants')
 	}
 
 
-	service.modifyList = function (list, toRemove) {
+	service.modifyList = function (list, toRemove, remove) {
 		var deferred = $q.defer();
 
 		// Updating the new list
@@ -103,20 +103,38 @@ angular.module('mailPants')
 			return true;
 		})
 
-		var params = {
-			list: list.emails,
-			id: list._id
-		}
-
 		// Saving the changes
 
-		$http.put('/api/modifylist', params)
-		.success(function (response) {
-			deferred.resolve(response);
-		})
-		.error(function (err) {
-			deferred.reject(err);
-		})
+		if (remove) {
+			var params = {
+				list: list.emails,
+				id: list._id
+			}
+
+
+			$http.put('/api/modifylist', params)
+			.success(function (response) {
+				deferred.resolve(response);
+			})
+			.error(function (err) {
+				deferred.reject(err);
+			})
+		} else {
+			var params = {
+				list: list.emails,
+				unsubs: toRemove,
+				id: list._id
+			}
+
+
+			$http.put('/api/unsub-emails', params)
+			.success(function (response) {
+				deferred.resolve(response);
+			})
+			.error(function (err) {
+				deferred.reject(err);
+			})
+		}
 
 		return deferred.promise;
 	}

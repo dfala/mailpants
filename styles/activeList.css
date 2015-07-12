@@ -1,3 +1,12 @@
+.al-section .main-container {
+	position: relative;
+	overflow: 
+}
+
+.al-section .action-wrapper {
+	overflow: auto;
+}
+
 label {
 	font-weight: normal;
 }
@@ -10,4 +19,13 @@ label {
 	vertical-align: middle;
 	height: 20px;
 	width: 20px;
+}
+
+.hard-actions {
+	float: right;
+	display: inline-block;
+}
+
+.soft-actions {
+	float: left;
 }
