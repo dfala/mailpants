@@ -33,4 +33,4 @@ angular.module('mailPants')
 	return {
 		templateUrl: '/templates/footer.html'
 	}
-})
+});

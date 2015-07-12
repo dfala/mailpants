@@ -44,6 +44,19 @@ exports.getList = function (req, res) {
 	});
 }
 
+exports.modifyList = function (req, res) {
+	List.findById(req.body.id, function (err, list) {
+		if (err) return res.status(500).send(err);
+		
+		list.emails = req.body.list;
+		list.emailCount = req.body.list.length;
+		
+		list.save(function (err, updatedList) {
+			if (err) return res.status(500).send(err);
+			return res.json(updatedList);
+		})
+	})
+}
 
 exports.deleteList = function (req, res) {
 	var listId = req.params.listId;

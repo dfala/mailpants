@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="styles/activeList.css">
 <header-template></header-template>
 
 <div class="al-section">
@@ -5,10 +6,15 @@
 	<div class="main-container">
 		<h3>{{activeList.listName}}</h3>
 		<hr>
+
+		<button ng-click="deleteEmails()" class="btn btn-default btn-kameleon">Delete Emails</button>
+
+		<hr>
 		
 		<h4>Active Emails:</h4>
 		<p ng-repeat="email in activeList.emails">
-			{{email}}
+			<input type="checkbox" class="check-box" ng-click="addEmail(email)">
+			<label>{{email}}</label>
 		</p>
 
 		<span ng-if="activeList.unsubs.length > 0">

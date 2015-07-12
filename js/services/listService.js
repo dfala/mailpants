@@ -10,7 +10,6 @@ angular.module('mailPants')
 
 		$http.get(uri)
 		.success(function (response) {
-			console.log(response);
 			deferred.resolve(response);
 		})
 		.error(function (err) {
@@ -91,6 +90,58 @@ angular.module('mailPants')
 
 		return deferred.promise;
 	}
+
+
+	service.modifyList = function (list, toRemove) {
+		var deferred = $q.defer();
+
+		// Updating the new list
+		list.emails = list.emails.filter(function (email, index) {
+			for (var i = 0; i < toRemove.length; i++) {
+				if (toRemove[i] === email) return false;
+			}
+			return true;
+		})
+
+		var params = {
+			list: list.emails,
+			id: list._id
+		}
+
+		// Saving the changes
+
+		$http.put('/api/modifylist', params)
+		.success(function (response) {
+			deferred.resolve(response);
+		})
+		.error(function (err) {
+			deferred.reject(err);
+		})
+
+		return deferred.promise;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	return service;
 })
