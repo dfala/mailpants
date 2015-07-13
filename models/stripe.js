@@ -1,5 +1,6 @@
 var keys = require('./keys.js');
 var stripe = require("stripe")(keys.stripeSecretTest);
+var User = require('../models/User.js');
 
 var exports = module.exports = {};
 
@@ -15,49 +16,83 @@ exports.makePayment = function (req, res) {
 	}, function(err, charge) {
 		// if (err && err.type === 'StripeCardError')
 		if (err) return res.status(500).send(err);
+		console.log(charge);
 		return res.json(charge);
 	});
 
 }
 
+exports.subscribeUser = function (req, res) {
+	var stripe = require("stripe")(
+	  keys.stripeSecretTest
+	);
+
+	stripe.customers.createSubscription(
+	  "cus_6bP9CymKaG02KC",
+	  {plan: "20plan"},
+	  function(err, subscription) {
+	    // asynchronously called
+	    if (err) return res.status(500).send(err);
+	    return res.json(subscription);
+	  }
+	);
+}
+
+exports.createUser = function (req, res) {
+	var stripeToken = req.body.id;
+
+	stripe.customers.create({
+	  source: stripeToken,
+	  description: req.body.email
+	})
+	.then(function (customer) {
+		User.findOne({ 'email' : req.body.activeUser }, function (err, foundUser) {
+			if (err) return res.status(500).send(err);
+
+			foundUser.stripeCustomerId = customer.id;
+			foundUser.save(function (err, result) {
+				if (err) return res.status(500).send(err);
+				
+				stripe.customers.createSubscription(
+				  customer.id,
+				  {plan: "20plan"},
+				  function(err, subscription) {
+				    // asynchronously called
+				    if (err) return res.status(500).send(err);
+				    return res.json(subscription);
+				  }
+				);
+			})
+		})
+	})
+}
 
 
-// REQ.BODY EXAMPLE DATA
-// { id: 'tok_16LZLxESGLnXaqA0m6M4l5O2',
-//   livemode: false,
-//   created: 1436188185,
-//   used: false,
-//   object: 'token',
-//   type: 'card',
-//   card:
-//    { id: 'card_16LZLxESGLnXaqA0yz8wtqTs',
-//      object: 'card',
-//      last4: '4242',
-//      brand: 'Visa',
-//      funding: 'credit',
-//      exp_month: 2,
-//      exp_year: 2016,
-//      country: 'US',
-//      name: 'dnlfala@gmail.com',
-//      address_line1: null,
-//      address_line2: null,
-//      address_city: null,
-//      address_state: null,
-//      address_zip: null,
-//      address_country: null,
-//      cvc_check: 'pass',
-//      address_line1_check: null,
-//      address_zip_check: null,
-//      tokenization_method: null,
-//      dynamic_last4: null,
-//      metadata: {} },
-//   email: 'dnlfala@gmail.com',
-//   verification_allowed: true,
-//   client_ip: '216.21.163.17' }
+// (Assuming you're using express - expressjs.com)
+// Get the credit card details submitted by the form
+// var stripeToken = request.body.stripeToken;
 
+// stripe.customers.create({
+//   source: stripeToken,
+//   description: 'payinguser@example.com'
+// }).then(function(customer) {
+//   return stripe.charges.create({
+//     amount: 1000, // amount in cents, again
+//     currency: "usd",
+//     customer: customer.id
+//   });
+// }).then(function(charge) {
+//   saveStripeCustomerId(user, charge.customer);
+// });
 
+// // Later...
+// var customerId = getStripeCustomerId(user);
 
-
+// stripe.charges.create({
+//   amount: 1500, // amount in cents, again
+//   currency: "usd",
+//   customer: customerId
+// });
 
 
 

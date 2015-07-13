@@ -6,6 +6,7 @@ var UserSchema = mongoose.Schema({
 	, password: { type: String, required: true }
 	, lists: { type: [String], default: [] }
 	, images: { type: [mongoose.Schema.Types.Mixed], default: [] }
+	, stripeCustomerId: String
 	, dateCreated: { type: Date, default: new Date() }
 })
 

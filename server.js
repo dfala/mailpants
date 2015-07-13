@@ -64,6 +64,7 @@ var requireAuth = function(req, res, next) {
 // Emails
 app.post('/api/email', MainController.send);
 
+
 // List management
 app.get('/api/emailLists/:userEmail', ListController.getLists);
 app.get('/api/list/:listId', ListController.getList);
@@ -73,6 +74,7 @@ app.put('/api/modifyList', ListController.modifyList);
 app.put('/api/unsub-emails', ListController.unsubEmails);
 app.delete('/api/list/:listId', ListController.deleteList);
 
+
 // User management
 app.get('/api/userinfo/:userEmail', MainController.userMandrillInfo);
 app.post('/api/forgot-password', MainController.forgotPassword);
@@ -81,16 +83,21 @@ app.put('/api/reset-password', MainController.resetPassword);
 app.get('/api/check-permission/:password/:email', MainController.checkPermission);
 app.put('/api/logout', MainController.logout);
 
+
 // Templates endpoints
 app.get('/api/template', MainController.getTemplate);
+
 
 // Amazon S3
 app.get('/api/image/:imageKey', AmazonController.getImage);
 app.put('/api/image', AmazonController.deleteImage);
 app.post('/api/newimage', AmazonController.postImage);
 
+
 // Stripe
-app.post('/api/payment', Stripe.makePayment);
+// app.post('/api/payment', Stripe.makePayment);
+app.post('/api/payment', Stripe.createUser);
+
 
 // Authentication
 app.post('/api/login', passport.authenticate('local-login', {
@@ -100,12 +107,14 @@ app.post('/api/login', passport.authenticate('local-login', {
 	failureFlash : true
 }));
 
+
 app.post('/api/signup', passport.authenticate('local-signup', {
 	//not working
 	successRedirect: '/#/email-lists',
 	failureRedirect: '/#/login',
 	failureFlash : true
 }));
+
 
 app.get('/api/user', function(req, res){
 	if (req.isAuthenticated()) return res.json(req.user);

@@ -1,6 +1,6 @@
 angular.module('mailPants')
 
-.directive('stripeTransact', function ($http) {
+.directive('stripeTransact', function ($http, $rootScope) {
 	return {
 		restrict: 'E',
 		scope: true,
@@ -11,6 +11,7 @@ angular.module('mailPants')
 		    image: '/styles/images/pants.png',
 		    token: function(token) {
 		    	token.amount = 20000;
+		    	token.activeUser = $rootScope.userInfo.email;
 
 		    	$http.post('/api/payment', token)
 		    	.success(function (response) {
