@@ -2,6 +2,33 @@
 	margin: 10px 0;
 }
 
+	.p-stats .left-container, .right-container {
+		width: 50%;
+		display: inline-block;
+	}
+
+	.p-stats .right-container {
+		float: right;
+	}
+
+	.p-stats .unit {
+		margin: 10px;
+		padding: 20px;
+		border: 1px solid #eee;
+		border-radius: 5px;
+	}
+
+	.p-stats h4 {
+		color: #1a75ff;
+		font-size: 28px;
+		margin-bottom: 5px;
+	}
+
+	.p-stats p {
+		margin: 0 0 5px 0;
+		font-weight: 600;
+	}
+
 .main-container.clean-container {
 	background-color: transparent;
 	border: none;
