@@ -50,9 +50,12 @@ function ($scope, activeList, listService, $location) {
 	}
 
 	$scope.deleteList = function (id) {
+		var confirmed = confirm("Deleting this list cannot be undone. Are you sure you want to delete it?");
+		if (!confirmed) return;
+
 		listService.deleteList(id)
 		.then(function (response) {
-			alert('Successfully deleted!')
+			alert('The list was successfully deleted.')
 			$location.path('/email-list')
 		})
 		.catch(function (err) {

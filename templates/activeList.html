@@ -5,7 +5,12 @@
 <div class="al-section">
 
 	<div class="main-container">
-		<h3>{{activeList.listName}}</h3>
+		<div class="name-container">
+			<h3>{{activeList.listName}}</h3>
+
+			<a ng-click="deleteList(activeList._id)" class="right">delete list</a>
+		</div>
+
 		<hr>
 
 		<div class="action-wrapper">
@@ -20,8 +25,6 @@
 			<div class="hard-actions">
 
 				<button class="btn btn-default btn-kameleon" list="activeList" create-csv>Download as CSV</button>
-				
-				<button ng-click="deleteList(activeList._id)" class="btn btn-default btn-kameleon">Delete List</button>
 
 			</div>
 		</div>

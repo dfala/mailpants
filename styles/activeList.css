@@ -1,10 +1,24 @@
 .al-section .main-container {
 	position: relative;
-	overflow: 
 }
 
 .al-section .action-wrapper {
 	overflow: auto;
+}
+
+.al-section .name-container {
+	padding-top: 20px;
+	padding-bottom: 10px;
+}
+
+	.al-section .name-container h3 {
+		margin: 0;
+		display: inline-block;
+	}
+
+.al-section .right {
+	float: right;
+	line-height: 33px;
 }
 
 label {
