@@ -28,6 +28,9 @@
 			
 			<form ng-submit="loginUser(user)">
 				<h4>Login back in</h4>
+
+				<div class="alert alert-warning" role="alert" ng-if="alertMessage">Invalid username/password</div>
+
 				<input placeholder="email" type="email" class="form-control" ng-model="user.email" id="login-email">
 				<br>
 				<input placeholder="password" type="password" class="form-control" ng-model="user.password">

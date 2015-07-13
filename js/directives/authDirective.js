@@ -21,7 +21,9 @@ angular.module('mailPants')
 					$location.path('/email-list');
 				})
 				.catch(function (err) {
-					throw new Error(err);
+					if (err.substring(0, 7) === 'invalid') return scope.alertMessage = true;
+					console.log(err);
+					// throw new Error(err);
 				});
 			}
 

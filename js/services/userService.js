@@ -65,6 +65,7 @@ angular.module('mailPants')
 			deferred.resolve(newUser);
 		})
 		.error(function (err) {
+			console.error(err);
 			deferred.reject(err);
 		});
 
