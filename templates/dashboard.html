@@ -23,6 +23,10 @@
     <button type="button" class="close" aria-label="Close"><span aria-hidden="true" ng-click="successMessage = false;">&times;</span></button>
   </div>
 
+  <h3 ng-if="noEmails === true">Metrics will be displayed here after sending your first email.</h3>
+
+  <span ng-if="!noEmails">
+
   <div ng-show="displayAll">
     <h3>All time metrics</h3>
 
@@ -247,6 +251,8 @@
     </div>
     
   </div>
+
+  </span>
 </div>
 
 <div class="main-container space">

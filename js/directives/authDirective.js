@@ -53,6 +53,10 @@ angular.module('mailPants')
 				});
 			}
 
+			scope.logout = function () {
+				userService.logout();
+			}
+
 		}
 	}
 });

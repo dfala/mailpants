@@ -27,7 +27,12 @@ angular.module('mailPants')
             scope.status = false;
           })
           .catch(function (err) {
-            throw new Error(err);
+            if (err.name === 'Unknown_Sender') {
+              scope.status = false;
+              return scope.noEmails = true;
+            } else {
+              throw new Error(err);
+            }
           })
       })();
     }

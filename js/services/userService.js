@@ -87,5 +87,16 @@ angular.module('mailPants')
 	}
 
 
+	service.logout = function () {
+		$http.put('/api/logout')
+		.success(function (response) {
+			console.info(response);
+		})
+		.error(function (err) {
+			throw new Error(err);
+		})
+	}
+
+
 	return service;
 })

@@ -79,6 +79,7 @@ app.post('/api/forgot-password', MainController.forgotPassword);
 app.get('/api/get-forgot-user/:email', MainController.getUserClean);
 app.put('/api/reset-password', MainController.resetPassword);
 app.get('/api/check-permission/:password/:email', MainController.checkPermission);
+app.put('/api/logout', MainController.logout);
 
 // Templates endpoints
 app.get('/api/template', MainController.getTemplate);
