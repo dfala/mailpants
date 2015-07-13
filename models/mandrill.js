@@ -3,6 +3,7 @@ var exports = module.exports = {};
 // Dependencies
 var mandrill = require('mandrill-api/mandrill');
 var keys = require('./keys.js');
+var User = require('./User.js');
 var mandrill_client = new mandrill.Mandrill(keys.mandrill);
 
 // Heavy lifting
@@ -19,11 +20,27 @@ exports.sendEmail = function (body, err, success) {
 
     mandrill_client.messages.send({"message": message, "async": async, "ip_pool": ip_pool}, function(result) {
         console.log(result);
-        success(result)
+        User.findOne({ 'email' : body.from_email }, function (err, foundUser) {
+            if (err) return res.status(500).send(err);
+
+            // updating emails left
+            foundUser.payment.emailsLeft = foundUser.payment.emailsLeft - body.to.length;
+            foundUser.payment.emailsSent = foundUser.payment.emailsSent + body.to.length;
+
+            foundUser.save(function (err, result) {
+                if (err) return res.status(500).send(err);
+                // return res.send('Emails sent successfully');
+            })
+
+        })
+
     }, function(e) {
         console.log('A mandrill error occurred: ' + e.name + ' - ' + e.message);
         err();
     });
+
+    // success here in case too many emails are being sent
+    success('Emails are in queue');
 }
 
 var message = {

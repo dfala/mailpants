@@ -37,7 +37,9 @@ exports.createUser = function (req, res) {
 			foundUser.payment = {
 				  stripeCustomerId: customer.id
 				, emailsLeft: 100000
+				, emailsSent: 0
 				, lastPaymentDate: new Date()
+				, payingUser: true
 				, plan: 20
 			}
 
