@@ -65,7 +65,12 @@ exports.resetPassword = function (req, res) {
 	User.findOne({ 'email' : req.body.email }, function (err, foundUser) {
 		if (err) return res.status(500).send(err);
 
-		foundUser.password = foundUser.generateHash(req.body.password);
+		var newUser = new User();
+		newUser.password = newUser.generateHash(req.body.password);
+		foundUser.password = newUser.password;
+
+		// foundUser.password = foundUser.generateHash(req.body.password);
+
 		foundUser.save(function (err, result) {
 			if (err) return res.status(500).send(err);
 
