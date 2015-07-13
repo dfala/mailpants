@@ -10,7 +10,7 @@ angular.module('mailPants')
 		    key: 'pk_test_yLQ1DdfyEHcTIbsrpF3rWAj1',
 		    image: '/styles/images/pants.png',
 		    token: function(token) {
-		    	token.amount = 20000;
+		    	token.amount = 2000;
 		    	token.activeUser = $rootScope.userInfo.email;
 
 		    	$http.post('/api/payment', token)
@@ -23,12 +23,12 @@ angular.module('mailPants')
 		    }
 		  });
 
-		  $('#customButton').on('click', function(e) {
+		  $('#paymentButton').on('click', function(e) {
 		    // Open Checkout with further options
 		    handler.open({
 		      name: 'Mailpants',
 		      description: '2 widgets',
-		      amount: 20000
+		      amount: 2000
 		    });
 		    e.preventDefault();
 		  });

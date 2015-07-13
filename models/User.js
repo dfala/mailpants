@@ -5,9 +5,16 @@ var UserSchema = mongoose.Schema({
 	  email: { type: String, required: true }
 	, password: { type: String, required: true }
 	, lists: { type: [String], default: [] }
-	, images: { type: [mongoose.Schema.Types.Mixed], default: [] }
-	, stripeCustomerId: String
+	, images: { type: [mongoose.Schema.Types.Mixed], default: [] }	
 	, dateCreated: { type: Date, default: new Date() }
+	, payment: {
+		  stripeCustomerId: String
+		, emailsLeft: { type: Number, default: 0 }
+		, emailsSent: { type: Number, default: 0 }
+		, lastPaymentDate: { type: Date }
+		, payingUser: { type: Boolean, default: false } 
+		, plan: { type: Number, default: 0 }
+	}
 })
 
 

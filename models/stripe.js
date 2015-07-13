@@ -22,21 +22,6 @@ exports.makePayment = function (req, res) {
 
 }
 
-exports.subscribeUser = function (req, res) {
-	var stripe = require("stripe")(
-	  keys.stripeSecretTest
-	);
-
-	stripe.customers.createSubscription(
-	  "cus_6bP9CymKaG02KC",
-	  {plan: "20plan"},
-	  function(err, subscription) {
-	    // asynchronously called
-	    if (err) return res.status(500).send(err);
-	    return res.json(subscription);
-	  }
-	);
-}
 
 exports.createUser = function (req, res) {
 	var stripeToken = req.body.id;
@@ -49,7 +34,13 @@ exports.createUser = function (req, res) {
 		User.findOne({ 'email' : req.body.activeUser }, function (err, foundUser) {
 			if (err) return res.status(500).send(err);
 
-			foundUser.stripeCustomerId = customer.id;
+			foundUser.payment = {
+				  stripeCustomerId: customer.id
+				, emailsLeft: 100000
+				, lastPaymentDate: new Date()
+				, plan: 20
+			}
+
 			foundUser.save(function (err, result) {
 				if (err) return res.status(500).send(err);
 				
@@ -66,34 +57,6 @@ exports.createUser = function (req, res) {
 		})
 	})
 }
-
-
-// (Assuming you're using express - expressjs.com)
-// Get the credit card details submitted by the form
-// var stripeToken = request.body.stripeToken;
-
-// stripe.customers.create({
-//   source: stripeToken,
-//   description: 'payinguser@example.com'
-// }).then(function(customer) {
-//   return stripe.charges.create({
-//     amount: 1000, // amount in cents, again
-//     currency: "usd",
-//     customer: customer.id
-//   });
-// }).then(function(charge) {
-//   saveStripeCustomerId(user, charge.customer);
-// });
-
-// // Later...
-// var customerId = getStripeCustomerId(user);
-
-// stripe.charges.create({
-//   amount: 1500, // amount in cents, again
-//   currency: "usd",
-//   customer: customerId
-// });
-
 
 
 

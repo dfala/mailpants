@@ -3,6 +3,56 @@
 <span dashboard-directive class="p-stats">
   <loading-wrap status="status"></loading-wrap>
 
+<div class="main-container purchase">
+
+  <!-- <h3>Purchase</h3> -->
+
+  <stripe-transact ng-show="info.payingUser === false">
+    <div class="unit green" id="paymentButton">
+      <h4>upgrade plan</h4>
+    </div>
+  </stripe-transact>
+
+  <div class="left-container">
+
+
+    <div class="unit">
+      <h4>{{info.emailsLeft | number : fractionSize}}</h4>
+      <p>Emails left this cycle</p>
+    </div>
+
+    <div class="unit">
+      <h4>{{info.lastPaymentDate | date:'longDate'}}</h4>
+      <h4 ng-if="!info.lastPaymentDate">No payment</h4>
+      <p>Billable cycle began</p>
+    </div>
+
+  </div>
+
+  <div class="right-container">
+
+    <div class="unit">
+      <h4>{{info.emailsSent}}</h4>
+      <p>Emails sent this cycle</p>
+    </div>
+
+
+    <div class="unit">
+      <h4>${{info.plan}}/month</h4>
+      <p>Current plan</p>
+    </div>
+
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
 <div class="main-container clean-container">
 
   <ul class="nav nav-tabs nav-justified" id="nav-menu">
@@ -16,7 +66,18 @@
 </div>
 
 
-<div class="main-container">
+
+
+
+
+
+
+
+
+
+
+
+<div class="main-container" style="margin-bottom: 20px;">
   <!-- EMAIL SUCCESS MESSAGE -->
   <div class="bg-success" ng-show="successMessage">
     <p>Email batch was sent successfully!</p>
@@ -253,15 +314,6 @@
   </div>
 
   </span>
-</div>
-
-<div class="main-container space">
-
-  <stripe-transact>
-    <h3>Purchase</h3>
-    <button id="customButton" class="btn btn-default btn-kameleon">Purchase</button>
-  </stripe-transact>
-
 </div>
 
 </span>

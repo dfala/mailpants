@@ -2,6 +2,10 @@
 	margin: 10px 0;
 }
 
+	.p-stats .main-container h3 {
+		margin-top: 0;
+	}
+
 	.p-stats .left-container, .right-container {
 		width: 50%;
 		display: inline-block;
@@ -18,10 +22,30 @@
 		border-radius: 5px;
 	}
 
+	.p-stats .green {
+		border: 1px solid #2ecc71;
+		cursor: pointer;
+	}
+
+		.p-stats .green h4 {
+			text-align: center;
+			color: #2ecc71;
+			font-size: 18px;
+		}
+
+		.p-stats .green:hover {
+			background-color: #2ecc71;
+		}
+
+		.p-stats .green:hover h4 {
+			color: #fff;
+		}
+
 	.p-stats h4 {
 		color: #1a75ff;
-		font-size: 28px;
+		font-size: 26px;
 		margin-bottom: 5px;
+		margin-top: 5px;
 	}
 
 	.p-stats p {

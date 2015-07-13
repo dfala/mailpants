@@ -1,5 +1,6 @@
 angular.module('mailPants')
 
+
 .directive('dashboardDirective', function ($rootScope, dataStorage, $timeout, dashboardService) {
   return {
     restrict: 'A',
@@ -16,7 +17,7 @@ angular.module('mailPants')
       if (scope.successMessage === true) {
         $timeout(function () {
           scope.successMessage = false;
-        }, 2000);
+        }, 2500);
       }
 
       var getUserData = (function () {
@@ -25,6 +26,8 @@ angular.module('mailPants')
           .then(function (response) {
             scope.allUserData = response;
             scope.status = false;
+
+            scope.info = $rootScope.userInfo.payment;
           })
           .catch(function (err) {
             if (err.name === 'Unknown_Sender') {
@@ -38,6 +41,9 @@ angular.module('mailPants')
     }
   }
 })
+
+
+
 
 .directive('chooseData', function ($timeout) {
   return {
