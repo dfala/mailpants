@@ -29,6 +29,9 @@ function ($rootScope, $http, $compile, emailService, $timeout, dataStorage, $loc
       })
 
       scope.sendEmail = function (emailBody) {
+        var emailsLeft = $rootScope.userInfo.payment.emailsLeft;
+        if (!emailsLeft || emailsLeft < 1) return alert('Pay first!');
+
         if (!emailBody.html) emailBody.html = '';
         emailBody.html = emailBody.html.replace(/<img/g, '<img style="max-width: 100% !important"');
 
