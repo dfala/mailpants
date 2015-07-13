@@ -62,7 +62,6 @@ exports.getUserClean = function (req, res) {
 }
 
 exports.resetPassword = function (req, res) {
-	console.log(req.body);
 	User.findOne({ 'email' : req.body.email }, function (err, foundUser) {
 		if (err) return res.status(500).send(err);
 
@@ -72,6 +71,19 @@ exports.resetPassword = function (req, res) {
 
 			return res.json(result);
 		})
+	})
+}
+
+exports.checkPermission = function (req, res) {
+	var email = req.params.email;
+	var password = req.params.password;
+	password = password.replace(/slash/g, '/');
+
+	User.findOne({ 'email' : email }, function (err, foundUser) {
+		if (err) return res.status(500).send(err);
+
+		if (foundUser.password === password) return res.send('Confirmed');
+		return res.status(500).send('Rejected');
 	})
 }
 

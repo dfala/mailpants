@@ -14,11 +14,27 @@ angular.module('mailPants')
 
 		$http.post('/api/forgot-password', data)
 		.success(function (response) {
-			console.log(response);
+			alert('You will receive an email shortly.')
 		})
 		.error(function (err) {
 			throw new Error(err);
 		})
+	}
+
+	service.checkDataMatch = function (password, email) {
+		var deferred = $q.defer();
+
+		var uri = '/api/check-permission/' + password + '/' + email;
+		
+		$http.get(uri)
+		.success(function (response) {
+			deferred.resolve(response);
+		})
+		.error(function (err) {
+			deferred.reject(err);
+		});
+
+		return deferred.promise;
 	}
 
 

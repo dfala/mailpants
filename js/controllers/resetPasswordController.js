@@ -1,7 +1,24 @@
 angular.module('mailPants')
 
-.controller('resetPasswordController', function ($scope, $location, resetPassword, resetEmail, $http) {
+.controller('resetPasswordController',
+function ($scope, $location, resetPassword, userService, resetEmail, $http) {
 	console.log(resetPassword, resetEmail);
+
+
+	var checkDataMatch = function () {
+		userService.checkDataMatch(resetPassword, resetEmail)
+		.then(function (response) {
+			console.log(response);
+			$scope.permitted = true;
+		})
+		.catch(function (err) {
+			console.log(err);
+			$scope.permitted = false;
+		});
+	}
+
+	checkDataMatch();
+
 
 	$scope.resetPassword = function (newPassword) {
 		if (!resetEmail || !resetPassword) return;

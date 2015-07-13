@@ -22,6 +22,8 @@ angular.module('mailPants')
 
 	service.forgotPassword = function (userInfo) {
 		var password = encodeURIComponent(userInfo.password);
+		password = password.replace(/%2F/g, 'slash');
+
 		var unsubLink = 'http://localhost:3000/#/reset/' + password + '/' + userInfo.email;
 
 		var emailBody = '<style type="text/css">img{ max-width: 100% !important; }</style>'
