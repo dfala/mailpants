@@ -7,6 +7,8 @@ function ($rootScope, $http, $compile, emailService, $timeout, dataStorage, $loc
     scope: true,
     link: function (scope, elem, attrs) {
 
+      scope.emailsLeft = $rootScope.userInfo.payment.emailsLeft;
+
       $timeout(function () {
         $('#email-subject-line').focus();
 
@@ -29,13 +31,12 @@ function ($rootScope, $http, $compile, emailService, $timeout, dataStorage, $loc
       })
 
       scope.sendEmail = function (emailBody) {
-        var emailsLeft = $rootScope.userInfo.payment.emailsLeft;
-        if (!emailsLeft || emailsLeft < 1) return alert('Pay first!');
+        if (!scope.emailsLeft || scope.emailsLeft < 1) return alert('Please pay first.');
+        if (!emailBody) alert('Come on... add something!');
 
         if (!emailBody.html) emailBody.html = '';
         emailBody.html = emailBody.html.replace(/<img/g, '<img style="max-width: 100% !important"');
 
-        if (!emailBody) alert('Come on man... add something!');
         emailService.sendBatch(emailBody)
         .then(function (response) {
           dataStorage.messageSuccess();
@@ -53,18 +54,7 @@ function ($rootScope, $http, $compile, emailService, $timeout, dataStorage, $loc
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-// DEPRECATED
+// DEPRECATED TEMPLATE
 
 // elem.contents().find("div[contenteditable='true']").each(function() {
 //     var conteEditable = $(this);
@@ -77,6 +67,3 @@ function ($rootScope, $http, $compile, emailService, $timeout, dataStorage, $loc
 //       throw new Error(err);
 //     })
 // });
-
-
-

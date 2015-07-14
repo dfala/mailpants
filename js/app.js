@@ -65,7 +65,13 @@ angular.module('mailPants', ['textAngular', 'ngRoute'])
 	.when('/compose-email', {
 		templateUrl: '/templates/composeEmail.html',
 		resolve: {
-			userData: checkUser
+			userData: checkUser,
+			activeList: function (dataStorage, $location) {
+				var activeList = dataStorage.serveList().emails;
+				
+				if (activeList) return activeList;
+				return $location.path('/email-list');
+			}
 		}
 	})
 

@@ -1,9 +1,14 @@
 <!-- BREADCRUMBS -->
 <ol class="breadcrumb" auth-directive>
 	<li><a href="/#/dashboard">Dashboard</a></li>
-	<li class="active"><a href="/#/email-list">Email List</a></li>
+	<li class="active"><a href="/#/email-list">Email Lists</a></li>
 	<!-- <li class="active"><a href="/#/templates">Templates</a></li> -->
-	<li class="active"><a href="/#/compose-email">Compose Email</a></li>
+	
+	<li class="active" ng-show="!listPresent">Compose Email</li>
+
+	<li class="active" ng-show="listPresent"><a href="/#/compose-email">Compose Email</a></li>
+
+
 
 	<li class="active logout-header" ng-click="logout()"><a href="/#/">Logout</a></li>
 </ol>

@@ -7,6 +7,8 @@
 	</images-section>
 
 	<div class="main-container text-editor">
+		<div class="alert alert-warning" ng-if="!emailsLeft || emailsLeft < 1">You must make a payment first.</div>
+
 		<input id="email-subject-line" placeholder="Subject Line"
 			class="form-control" ng-model="emailBody.subject"/>
 		<br>

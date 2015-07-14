@@ -16,9 +16,10 @@ angular.module('mailPants')
 		    	$http.post('/api/payment', token)
 		    	.success(function (response) {
 		    		console.info('response stripe directive: ', response);
+		    		window.location.reload();
 		    	})
 		    	.error(function (err) {
-		    		console.error(err);
+		    		throw new Error(err);
 		    	});
 		    }
 		  });

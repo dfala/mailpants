@@ -1,11 +1,16 @@
 angular.module('mailPants')
 
-.directive('authDirective', function ($rootScope, $location, $timeout, userService, $http) {
+.directive('authDirective',
+function ($rootScope, $location, $timeout, $http, userService, dataStorage) {
 	return {
 		restrict: 'A',
 		scope: true,
 		link: function (scope, elem, attrs) {
 
+			// Check for an active list (link or not compose-email on header)
+			if (dataStorage.serveList().emails) scope.listPresent = true;
+
+			// Focus input on the right field
 			$timeout(function () {
 				if ($location.$$url === '/login') {
 					$('#login-email').focus();
@@ -22,8 +27,7 @@ angular.module('mailPants')
 				})
 				.catch(function (err) {
 					if (err.substring(0, 7) === 'invalid') return scope.alertMessage = true;
-					console.log(err);
-					// throw new Error(err);
+					throw new Error(err);
 				});
 			}
 
@@ -40,7 +44,6 @@ angular.module('mailPants')
 				});
 			}
 
-			// Forgot password
 			scope.openForgot = function () {
 				var email = prompt('What\'s your email?');
 				if (!email) return;

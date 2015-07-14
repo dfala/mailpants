@@ -7,27 +7,33 @@ angular.module('mailPants')
     scope: true,
     link: function (scope, elem, attrs) {
 
-      scope.status = true;
 
+      // INIT
       var userEmail = $rootScope.userInfo.email;
+      scope.status = true;
       scope.displayAll = true;
+
 
       // Check for email sucess message
       scope.successMessage = dataStorage.isSuccess();
+
       if (scope.successMessage === true) {
         $timeout(function () {
           scope.successMessage = false;
         }, 2500);
       }
 
+
       var getUserData = (function () {
+
           if (!userEmail) return console.warn('No user email defined');
+          
           dashboardService.getUserData(userEmail)
           .then(function (response) {
             scope.allUserData = response;
             scope.status = false;
-
             scope.info = $rootScope.userInfo.payment;
+
           })
           .catch(function (err) {
             if (err.name === 'Unknown_Sender') {
@@ -36,8 +42,12 @@ angular.module('mailPants')
             } else {
               throw new Error(err);
             }
-          })
+
+          });
+
       })();
+
+
     }
   }
 })

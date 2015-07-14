@@ -2,19 +2,6 @@
 
 	<header-template></header-template>
 
-	<!-- CREATE NEW LIST -->
-	<div class="main-container">
-
-		<h4>Create New list</h4>
-
-		<form ng-submit="newEmails(newList)">
-			<input placeholder="List name" class="form-control" ng-model="newList.listName" required>
-			<br>
-			<textarea placeholder="Comma-separated email(s)" class="form-control" ng-model="newList.addedEmails" required></textarea>
-			<button class="btn btn-default">Save email list</button>
-		</form>
-	</div>
-
 	<!-- DISPLAY SAVED LISTS -->
 	<div class="main-container space">
 		<div class="row" ng-if="!lists.length">
@@ -24,13 +11,13 @@
 
 		<div class="row border-bottom" ng-if="lists.length">
 			<div class="col-md-6">
-				<h4>List Name</h4>
+				<h4>List name</h4>
 			</div>
 			<div class="col-md-3">
-				<h4>Active Emails</h4>
+				<h4>Active emails</h4>
 			</div>
 			<div class="col-md-3">
-				<h4>Actions</h4>
+				<h4>Select list</h4>
 			</div>
 		</div>
 
@@ -48,10 +35,25 @@
 			</div>
 			<div class="col-md-3">
 				<button class="btn btn-success btn-kameleon" ng-click="selectList(list)" ng-if="list.emailCount">
-					Send to this list
+					Email this list
 				</button>
 			</div>
 		</div>
+	</div>
+
+	
+
+	<!-- CREATE NEW LIST -->
+	<div class="main-container">
+
+		<h4>Create a new list</h4>
+
+		<form ng-submit="newEmails(newList)">
+			<input placeholder="List name" class="form-control" ng-model="newList.listName" required>
+			<br>
+			<textarea placeholder="Comma-separated email(s)" class="form-control" ng-model="newList.addedEmails" required></textarea>
+			<button class="btn btn-default">Save email list</button>
+		</form>
 	</div>
 
 </div>

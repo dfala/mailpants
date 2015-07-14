@@ -44,6 +44,8 @@
 
   </div>
 
+  <p class="side-note" ng-if="successMessage">*After sending an email batch, please allow up to a 5 min delay for the numbers to update.</p>
+
 </div>
 
 
@@ -68,15 +70,14 @@
 
 
 
-
+<!-- EMAIL SUCCESS MESSAGE -->
+<div class="bg-success" ng-show="successMessage">
+  <p>Email batch was sent successfully!</p>
+  <button type="button" class="close" aria-label="Close"><span aria-hidden="true" ng-click="successMessage = false;">&times;</span></button>
+</div>
 
 
 <div class="main-container" style="margin-bottom: 30px;">
-  <!-- EMAIL SUCCESS MESSAGE -->
-  <div class="bg-success" ng-show="successMessage">
-    <p>Email batch was sent successfully!</p>
-    <button type="button" class="close" aria-label="Close"><span aria-hidden="true" ng-click="successMessage = false;">&times;</span></button>
-  </div>
 
   <h3 ng-if="noEmails === true">Metrics will be displayed here after sending your first email.</h3>
 
