@@ -32,17 +32,25 @@
 		<hr>
 		
 		<h4>Active Emails:</h4>
-		<p ng-repeat="email in activeList.emails">
-			<input type="checkbox" class="check-box" ng-click="addEmailToArray(email)">
-			<label>{{email}}</label>
-		</p>
+		<span ng-repeat="email in activeList.emails">
+			<hr class="light-line">
+			<p>
+				<input type="checkbox" class="check-box" ng-click="addEmailToArray(email)">
+				<label>{{email}}</label>
+			</p>
+		</span>
 
 		<span ng-if="activeList.unsubs.length > 0">
 			<hr>
 			<h4>Unsubscribed Emails:</h4>
-			<p ng-repeat="unsub in activeList.unsubs">
-				{{unsub}}
-			</p>
+
+			<span ng-repeat="unsub in activeList.unsubs">
+				<hr class="light-line">
+				<p>
+					{{unsub}}
+				</p>
+			</span>
+
 		</span>
 	</div>
 

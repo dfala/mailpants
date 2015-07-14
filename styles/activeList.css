@@ -21,11 +21,18 @@
 	line-height: 33px;
 }
 
+.al-section .light-line {
+	margin-top: 5px;
+	margin-bottom: 5px;
+	border: 0;
+	border-top: 1px solid #FBF8F8;
+}
+
 label {
 	font-weight: normal;
 }
 
-.btn {
+.al-section .btn {
 	margin: 0;
 }
 
